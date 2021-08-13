@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>证件办理-临时证</title>
     <!-- 用户分析统计 -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/js/tongji.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/js/tongji.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/js/fzxiysjw.js"></script>
 </head>
@@ -140,7 +140,9 @@
         doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 3, '申请人签字：');
         doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 2.5, '登记处意见：');
 
-        //doc.save('临时执勤许可证(A4版).pdf');
+        //var pdfOutput = doc.output("blob");
+        //window.alert(pdfOutput);
+        doc.save('临时执勤许可证(A4版).pdf');
         document.getElementById("iframe123").src = doc.output('datauristring'); //在iframe中显示
     }
 </script>
