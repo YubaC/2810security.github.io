@@ -59,9 +59,8 @@
         <input type="text" name="date" id="date">
         <br><br>
         </form>
-        <button id='exportBtn'>生成pdf</button>
+        <button id='exportBtn'>生成临时执勤许可证</button>
 
-        <iframe id="iframe123" frameborder="1" width="400" height="500"></iframe>
         <hr>
         <p align="left">
             <font face="宋体">常用外网链接：<a href="http://jnsgzx.jinan.cn/">济南舜耕中学</a></font>
@@ -142,8 +141,6 @@
 
 
         doc.save('临时执勤许可证(A4版).pdf');
-        document.getElementById("iframe123").src = doc.output('datauristring'); //在iframe中显示
-
 
     }
 </script>
