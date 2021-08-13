@@ -1,0 +1,145 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>证件办理-临时证</title>
+    <!-- 用户分析统计 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/js/tongji.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.umd.js"></script>
+    <script src="../../js/fzxiysjw.js"></script>
+</head>
+
+<body background="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/images/desalination2.jpg">
+
+    <table border="0" width="100%" id="table2">
+        <tr>
+            <td align="center">
+
+                <p>　</p>
+                <table border="0" width="100%" id="table5">
+                    <tr>
+                        <td align="center" width="96%">
+                            <img border="0" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/images/title.jpg" width="1000" height="200"></td>
+                    </tr>
+                </table>
+                <font face="华文中宋">团结紧张 严肃活泼</font>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1" width="100%" id="table3">
+        <tr>
+            <td width="100" align="center"><a href="../../index.htm">首页</a></td>
+            <td width="100" align="center"><a href="../../下属机构/下属机构.htm">下属机构</a></td>
+            <td width="100" align="center"><a href="../../法律规章/法律规章.htm">班纪校规</a></td>
+            <td width="100" align="center"><a href="../../监督举报/监督举报.htm">监督举报</a></td>
+            <td align="center" width="100"><a href="../../审查巡察/审查巡察.htm">审查巡察</a></td>
+            <td align="center" width="100"><a href="../../服务大厅/服务大厅.htm">服务大厅</a></td>
+        </tr>
+    </table>
+    <p align="center">
+        <font size="6" face="华文中宋">证件办理-临时证</font>
+    </p>
+    <p>
+        济南舜耕中学二十八级十班安全局临时执勤许可证(A4版)<br>根据有关规定，当执勤证件出现丢失、损坏、过期等无法使用的情况，但需要使用 执勤证件时，持证人有权向有关部门申请签发临时执勤许可证。<br>有关部门应及时处理。
+    </p>
+    <p>
+        注：打印完成后不得对证件进行涂改。否则证件无效。
+    </p>
+    <p <form action="/demo/demo_form.asp">
+        请输入姓名:<br>
+        <input type="text" name="name" id="name">
+        <br> 请输入性别:<br>
+        <input type="text" name="sex" id="sex">
+        <br> 请输入原证件号码:<br>
+        <input type="text" name="number" id="number">
+        <br> 请输入职务:<br>
+        <input type="text" name="officer" id="officer">
+        <br> 请输入申请日期:<br>
+        <input type="text" name="date" id="date">
+        <br><br>
+        </form>
+        <button id='exportBtn'>生成pdf</button>
+        <hr>
+        <p align="left">
+            <font face="宋体">常用外网链接：<a href="http://jnsgzx.jinan.cn/">济南舜耕中学</a></font>
+        </p>
+
+</body>
+<script>
+    exportBtn.onclick = function() {
+
+
+        // v1
+        // var doc = new jsPDF();
+        // v2
+        // var name = prompt('请输入姓名:');
+        // var sex = prompt('请输入性别:');
+        // var number = prompt('请输入原证件号码:');
+        // var officer = prompt('请输入职务:');
+        // var date = prompt('请输入申请日期:');
+
+        var name = document.getElementById("name").value;
+        var sex = document.getElementById("sex").value;
+        var number = document.getElementById("number").value;
+        var officer = document.getElementById("officer").value;
+        var date = document.getElementById("date").value;
+        name = name.toString();
+        sex = sex.toString();
+        number = number.toString();
+        officer = officer.toString();
+        date = date.toString();
+
+        var doc = new jspdf.jsPDF('a4', 'mm');
+
+        // 添加并设置字体
+        doc.addFont('fzxiysjw.ttf', 'fzxiysjw', 'normal');
+        doc.setFont('fzxiysjw');
+        doc.setFontSize(12);
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 10, '经有关部门登记盖章后有效');
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 9.5, '        济南舜耕中学二十八级十班安全局临时执勤许可证(A4版)');
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 9, '    根据有关规定，当执勤证件出现丢失、损坏、过期等无法使用的情况，但需要使用');
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 8.5, '执勤证件时，持证人有权向有关部门申请签发临时执勤许可证。');
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 8, '    有关部门应及时处理。登记处名称：');
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 7.5, '姓  名');
+        doc.text(25.4 + 25.4 * 1, 297 - 25.4 - 25.4 * 7.5, name);
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 7, '性  别');
+        doc.text(25.4 + 25.4 * 1, 297 - 25.4 - 25.4 * 7, sex);
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 6.5, '原证件号码');
+        doc.text(25.4 + 25.4 * 1, 297 - 25.4 - 25.4 * 6.5, number);
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 6, '职  务');
+        doc.text(25.4 + 25.4 * 1, 297 - 25.4 - 25.4 * 6, officer);
+        doc.text(25.4 + 25.4 * 3, 297 - 25.4 - 25.4 * 7.5, '申请日期');
+        doc.text(25.4 + 25.4 * 4, 297 - 25.4 - 25.4 * 7.5, date);
+        doc.text(25.4 + 25.4 * 3, 297 - 25.4 - 25.4 * 7, '登记日期');
+        doc.text(25.4 + 25.4 * 3, 297 - 25.4 - 25.4 * 6.5, '登记号码');
+        doc.text(25.4 + 25.4 * 3, 297 - 25.4 - 25.4 * 6, '有效期');
+        doc.text(25.4 + 25.4 * 4, 297 - 25.4 - 25.4 * 6, '自登记日期起14日');
+        doc.text(25.4 + 25.4 * 5.5, 297 - 25.4 - 25.4 * 7.5, '本人一');
+        doc.text(25.4 + 25.4 * 5.5, 297 - 25.4 - 25.4 * 7, '寸近照');
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 5.8, '——————————————登记处章骑缝线——————————————裁剪线');
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 5.5, '    下联签字盖章后交有关部门保存。登记处名称：');
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 5, '姓  名');
+        doc.text(25.4 + 25.4 * 1, 297 - 25.4 - 25.4 * 5, name);
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 4.5, '性  别');
+        doc.text(25.4 + 25.4 * 1, 297 - 25.4 - 25.4 * 4.5, sex);
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 4, '原证件号码');
+        doc.text(25.4 + 25.4 * 1, 297 - 25.4 - 25.4 * 4, number);
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 3.5, '职  务');
+        doc.text(25.4 + 25.4 * 1, 297 - 25.4 - 25.4 * 3.5, officer);
+        doc.text(25.4 + 25.4 * 3, 297 - 25.4 - 25.4 * 5, '申请日期');
+        doc.text(25.4 + 25.4 * 4, 297 - 25.4 - 25.4 * 5, date);
+        doc.text(25.4 + 25.4 * 3, 297 - 25.4 - 25.4 * 4.5, '登记日期');
+        doc.text(25.4 + 25.4 * 3, 297 - 25.4 - 25.4 * 4, '登记号码');
+        doc.text(25.4 + 25.4 * 3, 297 - 25.4 - 25.4 * 3.5, '有效期');
+        doc.text(25.4 + 25.4 * 4, 297 - 25.4 - 25.4 * 3.5, '自登记日期起14日');
+        doc.text(25.4 + 25.4 * 5.5, 297 - 25.4 - 25.4 * 5, '本人一');
+        doc.text(25.4 + 25.4 * 5.5, 297 - 25.4 - 25.4 * 4.5, '寸近照');
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 3, '申请人签字：');
+        doc.text(25.4 + 25.4 * 0, 297 - 25.4 - 25.4 * 2.5, '登记处意见：');
+
+        doc.save('临时执勤许可证(A4版).pdf');
+    }
+</script>
+
+</html>
