@@ -102,16 +102,16 @@
         activelife = getUrlParam("activelife");
         sign = getUrlParam("sign");
 
-        userame2 = decodeURI(username);
-        sex2 = decodeURI(sex);
+        //var userame2 = decodeURI(username);
+        //var sex2 = decodeURI(sex);
 
         text = "查询结果：";
         text += "<br>";
         text += "证件编号：" + number;
         text += "<br>";
-        text += "姓名：" + username2;
+        text += "姓名：" + decodeURI(decodeURI(username));
         text += "<br>";
-        text += "性别：" + sex2;
+        text += "性别：" + decodeURI(decodeURI(sex));
         text += "<br>";
         text += "发证机关：安全局人事处";
         text += "<br>";
@@ -120,13 +120,13 @@
         text += "有效期限：" + activelife + ".1.1-" + activelife + ".12.31";
         document.getElementById("p").innerHTML = text;
 
-        all_hash = hash(number + username + sex + activelife);
+        all_hash = hash(number + encodeURI(username) + encodeURI(sex) + activelife);
 
         datetoday = new Date();
         timenow = datetoday.getTime();
         datetoday.setTime(timenow);
         myyear = datetoday.getYear() + 1900;
-        //window.alert(all_hash);
+        //window.alert(number + username + sex + activelife);
 
         if (sign == all_hash) {
             if (myyear == activelife) {

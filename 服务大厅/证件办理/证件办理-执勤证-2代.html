@@ -103,8 +103,8 @@
         date = myyear + ' .1.1- ' + myyear + '.12.31 '
         date = date.toString();
 
-        name2 = encodeURI(name);
-        sex2 = encodeURI(sex);
+        name2 = encodeURI(encodeURI(name));
+        sex2 = encodeURI(encodeURI(sex));
     }
 
     function hide() {
@@ -189,7 +189,7 @@
         reloadinfo();
         QRtext = "https://yubac.github.io/2810security.github.io/SecurityServices/verify.html?" + 'name=' + name2 + '&sex=' + sex2 + '&number=' + number + '&activelife=' + myyear + '&sign=' + hash(number + name2 + sex2 + myyear);
         QRonload(QRtext);
-        //makeCode();
+        //window.alert(number + name2 + sex2 + myyear);
 
         show();
     }
