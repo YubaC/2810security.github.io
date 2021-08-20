@@ -1,0 +1,234 @@
+﻿<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>证件办理-执勤证</title>
+    <!-- 用户分析统计 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/js/tongji0.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/js/tongji1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/js/fzxiysjw.js"></script>
+</head>
+
+<body background="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/images/desalination2.jpg">
+
+    <table border="0" width="100%" id="table2">
+        <tr>
+            <td align="center">
+
+                <p>　</p>
+                <table border="0" width="100%" id="table5">
+                    <tr>
+                        <td align="center" width="96%">
+                            <img border="0" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/images/title.jpg" width="1000" height="200">
+                        </td>
+                    </tr>
+                </table>
+                <font face="华文中宋">团结紧张 严肃活泼</font>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1" width="100%" id="table3">
+        <tr>
+            <td width="100" align="center"><a href="../../index.htm">首页</a></td>
+            <td width="100" align="center"><a href="../../下属机构/下属机构.htm">下属机构</a></td>
+            <td width="100" align="center"><a href="../../法律规章/法律规章.htm">班纪校规</a></td>
+            <td width="100" align="center"><a href="../../监督举报/监督举报.htm">监督举报</a></td>
+            <td align="center" width="100"><a href="../../审查巡察/审查巡察.htm">审查巡察</a></td>
+            <td align="center" width="100"><a href="../../服务大厅/服务大厅.htm">服务大厅</a></td>
+        </tr>
+    </table>
+    <p align="center">
+        <font size="6" face="华文中宋">证件办理-值勤许可证</font>
+    </p>
+    <p>
+        济南舜耕中学二十八级十班安全局执勤许可证<br>值勤许可证是安全局成员在执勤时应随身携带，以证明身份的证件。如有丢失，应及时补办。<br>办理期间请使用<a href='证件办理-临时证.html'>临时执勤许可证</a>。
+    </p>
+    <p>
+        执勤许可证有横版和竖版之分。<br>两种许可证功能相同，除版式外没有任何区别。
+    </p>
+    <p>
+        注：打印完成后不得对证件进行涂改。否则证件无效。
+    </p>
+    <p <form action="/demo/demo_form.asp">
+        请输入编号:<br>
+        <input type="text" name="name" id="number" onchange="hide()">
+        <br> 请输入性名:<br>
+        <input type="text" name="sex" id="name" onchange="hide()">
+        <br> 请输入性别:<br>
+        <input type="text" name="number" id="sex" onchange="hide()">
+        <br><br>
+        </form>
+        <button id='exportBtn'>生成执勤许可证</button>
+        <br>
+        <button id='download_heng' style="display:none">下载执勤许可证(横版)</button>
+        <button id='download_shu' style="display:none">下载执勤许可证(竖版)</button>
+        <p id='QRp' style="display:none">
+            您的证件二维码：
+        </p>
+        <div id="qrcode" style="width:100px; height:100px; margin-top:15px; ">
+        </div>
+
+        <canvas id="myCanvas" width="163" height="244"></canvas>
+
+        <hr>
+        <p align="left">
+            <font face="宋体">常用外网链接：<a href="http://jnsgzx.jinan.cn/">济南舜耕中学</a></font>
+        </p>
+
+</body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/KeeeX/qrcodejs/qrcode.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.1/jspdf.debug.js"></script> -->
+<script>
+    qrcode = new QRCode(document.getElementById("qrcode"), {
+        width: 200,
+        height: 200
+    });
+    reloadinfo();
+
+    function reloadinfo() {
+        name = document.getElementById("name").value;
+        sex = document.getElementById("sex").value;
+        number = document.getElementById("number").value;
+        name = name.toString();
+        sex = sex.toString();
+        number = number.toString();
+
+        datetoday = new Date();
+        timenow = datetoday.getTime();
+        datetoday.setTime(timenow);
+        myyear = datetoday.getYear() + 1900;
+
+        date = myyear + ' .1.1- ' + myyear + '.12.31 '
+        date = date.toString();
+
+        name2 = encodeURI(name);
+        sex2 = encodeURI(sex);
+    }
+
+    function hide() {
+        document.getElementById('download_heng').style.display = 'none'
+        document.getElementById('download_shu').style.display = 'none'
+        document.getElementById('QRp').style.display = 'none'
+    }
+
+    function show() {
+        document.getElementById('download_heng').style.display = 'block'
+        document.getElementById('download_shu').style.display = 'block'
+        document.getElementById('QRp').style.display = 'block'
+    }
+
+    var I64BIT_TABLE =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-'.split('');
+
+    function hash(input) {
+        var hash = 5381;
+        var i = input.length - 1;
+        if (typeof input == 'string') {
+            for (; i > -1; i--)
+                hash += (hash << 5) + input.charCodeAt(i);
+        } else {
+            for (; i > -1; i--)
+                hash += (hash << 5) + input[i];
+        }
+        var value = hash & 0x7FFFFFFF;
+        var retValue = '';
+        do {
+            retValue += I64BIT_TABLE[value & 0x3F];
+        }
+        while (value >>= 6);
+        return retValue;
+    }
+
+    function buildpdf(img) {
+
+        //var doc = new jspdf.jsPDF('a4 ', 'mm ');
+        doc = new jspdf.jsPDF('a4', 'mm');
+        //doc = new jsPDF('a4 ', 'mm ');
+        doc.addFont('fzxiysjw.ttf', 'fzxiysjw', 'normal');
+        doc.setFont('fzxiysjw');
+        doc.setFontSize(16);
+        //doc.addImage("examples/images/Octonyan.jpg", "JPEG", 15, 40, 180, 180);
+
+        doc.addImage(img, 'JPEG', 30.75, 6.75, 148.5, 284.25);
+        doc.text(103.4 + 30.75, 159.2 + 30.75 + 4.5 - 24 + 10 * 0, number);
+        doc.text(103.4 + 30.75, 159.2 + 30.75 + 4.5 - 24 + 10 * 1, name);
+        doc.text(103.4 + 30.75, 159.2 + 30.75 + 4.5 - 24 + 10 * 2, sex);
+        doc.text(103.4 + 30.75, 159.2 + 30.75 + 4.5 - 24 + 10 * 3, '安全局人事处');
+        doc.setFontSize(10);
+        doc.text(103.4 + 30.75, 159.2 + 30.75 + 4 - 24 + 10 * 4, date);
+
+
+    }
+
+    function QRonload(inputtext) {
+
+        qrcode.makeCode(inputtext);
+
+    }
+
+    function makeCode() {
+        qrimg = document.getElementById('qrcode').lastChild;
+        console.log(qrimg);
+        canvas = document.createElement('CANVAS');
+        canvas.width = 200
+        canvas.height = 200
+
+        cxt = canvas.getContext('2d');
+
+        cxt.drawImage(qrimg, 0, 0, 200, 200);
+        cxt.font = '20px Arial';
+        cxt.fillStyle = "black";
+
+        dataURL = canvas.toDataURL('image/png', 1.0);
+        canvas = null;
+    }
+
+    exportBtn.onclick = function() {
+        reloadinfo();
+        QRtext = "https://yubac.github.io/2810security.github.io/SecurityServices/verify.html?" + 'name=' + name2 + '&sex=' + sex2 + '&number=' + number + '&activelife=' + myyear + '&sign=' + hash(number + name2 + sex2 + myyear);
+        QRonload(QRtext);
+        //makeCode();
+
+        show();
+    }
+
+    download_heng.onclick = function() {
+
+        //var imgData = ' ';
+        buildpdf('https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/服务大厅/证件办理/images/formwork3.jpg');
+        //buildpdf('formwork.jpg');
+
+        QRonload(QRtext);
+        makeCode();
+        doc.addImage(dataURL, 'PNG', 103.4 + 6, 210 + 10, 64.25, 64.25);
+        doc.text(25.75, 245.75, '这是横版的值勤许可证。');
+        doc.text(25.75, 250.75, '打印完成后请将值勤许可证按外边框裁下，');
+        doc.text(25.75, 255.75, '然后将裁下的值勤许可证上下对折，再左右对折，');
+        doc.text(25.75, 260.75, '最后将二维码折向证件内侧，');
+        doc.text(25.75, 265.75, '即可获得值勤许可证(横版)。');
+        doc.save('执勤许可证(横版).pdf');
+        //250.75
+    }
+
+    download_shu.onclick = function() {
+
+        //var imgData = ' ';
+        buildpdf('https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/服务大厅/证件办理/images/formwork4.jpg');
+        //buildpdf('formwork2.jpg');
+
+        QRonload(QRtext);
+        makeCode();
+        doc.addImage(dataURL, 'PNG', 103.4 + 6, 210 + 10, 64.25, 64.25);
+        doc.text(25.75, 245.75, '这是竖版的值勤许可证。');
+        doc.text(25.75, 250.75, '打印完成后请将值勤许可证按外边框裁下，');
+        doc.text(25.75, 255.75, '然后将裁下的值勤许可证左右对折，再上下对折，');
+        doc.text(25.75, 260.75, '最后将二维码折向证件内侧，');
+        doc.text(25.75, 265.75, '即可获得值勤许可证(竖版)。');
+        doc.save('执勤许可证(竖版).pdf');
+        //250.75
+    }
+</script>
+
+</html>

@@ -102,37 +102,40 @@
         activelife = getUrlParam("activelife");
         sign = getUrlParam("sign");
 
+        userame2 = decodeURI(username);
+        sex2 = decodeURI(sex);
+
         text = "查询结果：";
         text += "<br>";
         text += "证件编号：" + number;
         text += "<br>";
-        text += "姓名：" + username;
+        text += "姓名：" + username2;
         text += "<br>";
-        text += "性别：" + sex;
+        text += "性别：" + sex2;
         text += "<br>";
         text += "发证机关：安全局人事处";
         text += "<br>";
         // Base64解密：window.atob();加密：window.btoa();
         //text += "有效期限：" + window.atob(activelife);
-	text += "有效期限：" + activelife + ".1.1-" + activelife + ".12.31";
+        text += "有效期限：" + activelife + ".1.1-" + activelife + ".12.31";
         document.getElementById("p").innerHTML = text;
 
         all_hash = hash(number + username + sex + activelife);
 
-	datetoday = new Date();
-    	timenow = datetoday.getTime();
-    	datetoday.setTime(timenow);
-    	myyear = datetoday.getYear() + 1900;
+        datetoday = new Date();
+        timenow = datetoday.getTime();
+        datetoday.setTime(timenow);
+        myyear = datetoday.getYear() + 1900;
         //window.alert(all_hash);
 
         if (sign == all_hash) {
-		if (myyear == activelife) {
-			document.getElementById('result').style.color = 'green';
-            		document.getElementById('result').innerHTML = "证件合法";
-		} else {
-			document.getElementById('result').style.color = 'red';
-            		document.getElementById('result').innerHTML = "证件过期";
-		}
+            if (myyear == activelife) {
+                document.getElementById('result').style.color = 'green';
+                document.getElementById('result').innerHTML = "证件合法";
+            } else {
+                document.getElementById('result').style.color = 'red';
+                document.getElementById('result').innerHTML = "证件过期";
+            }
 
         } else {
             document.getElementById('result').style.color = 'red';
