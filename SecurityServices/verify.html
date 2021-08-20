@@ -1,0 +1,153 @@
+﻿<html>
+<!-- ?name=0&sex=0&number=28100000&activelife=2021&sign=VrNCmB -->
+<!-- ?name=0&sex=0&number=28100000&activelife=2020&sign=0EKyq -->
+
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>证件查询</title>
+    <!--l2d调用-->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <style>
+        #github svg {
+            transition: all 1s;
+            fill: #222;
+            color: #fff;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: 0;
+            width: 80px;
+            height: 80px;
+        }
+        
+        #github:hover svg {
+            width: 160px;
+            height: 160px;
+        }
+    </style>
+    <!-- 用户分析统计 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/js/tongji0.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/js/tongji1.js"></script>
+</head>
+
+<body background="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/images/desalination2.jpg">
+
+    <!--l2d人物动画-->
+    <div>
+        <script src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/js/autoload.js"></script>
+    </div>
+    <table border="0" width="100%" id="table2">
+        <tr>
+            <td align="center" width="96%" height="239">
+                <p><img border="0" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io/images/title.jpg" width="1000" height="200"></td>
+        </tr>
+        <tr>
+            <td align="center">
+                <font face="华文中宋">团结紧张 严肃活泼</font>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1" width="100%" id="table1">
+        <tr>
+            <td width="100" align="center"><a href="index.htm">首页</a></td>
+            <td width="100" align="center"><a href="下属机构/下属机构.htm">下属机构</a></td>
+            <td width="100" align="center"><a href="法律规章/法律规章.htm">法律规章</a></td>
+            <td width="100" align="center"><a href="监督举报/监督举报.htm">监督举报</a></td>
+            <td align="center" width="100"><a href="审查巡察/审查巡察.htm">审查巡察</a></td>
+            <td align="center" width="100"><a href="证件办理/证件办理.htm">证件办理</a></td>
+            <td align="center" width="100"><a href="服务大厅/服务大厅.htm">服务大厅</a></td>
+        </tr>
+    </table>
+
+    <h1 id='p'></h1>
+    <h1 id='result'></h1>
+    <!-- <button type="button" onclick='document.getElementById("p").innerHTML =getUrlParam("name") '>点击我！</button> -->
+
+    <Script language="javascript">
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象  
+            var r = window.location.search.substr(1).match(reg); //匹配目标参数   
+            if (r != null) return unescape(r[2]);
+            return null; //返回参数值  
+        }
+
+        var I64BIT_TABLE =
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-'.split('');
+
+        function hash(input) {
+            var hash = 5381;
+            var i = input.length - 1;
+            if (typeof input == 'string') {
+                for (; i > -1; i--)
+                    hash += (hash << 5) + input.charCodeAt(i);
+            } else {
+                for (; i > -1; i--)
+                    hash += (hash << 5) + input[i];
+            }
+            var value = hash & 0x7FFFFFFF;
+            var retValue = '';
+            do {
+                retValue += I64BIT_TABLE[value & 0x3F];
+            }
+            while (value >>= 6);
+            return retValue;
+        }
+
+        number = getUrlParam("number");
+        username = getUrlParam("name");
+        sex = getUrlParam("sex");
+        activelife = getUrlParam("activelife");
+        sign = getUrlParam("sign");
+
+        text = "查询结果：";
+        text += "<br>";
+        text += "证件编号：" + number;
+        text += "<br>";
+        text += "姓名：" + username;
+        text += "<br>";
+        text += "性别：" + sex;
+        text += "<br>";
+        text += "发证机关：安全局人事处";
+        text += "<br>";
+        // Base64解密：window.atob();加密：window.btoa();
+        //text += "有效期限：" + window.atob(activelife);
+	text += "有效期限：" + activelife + ".1.1-" + activelife + ".12.31";
+        document.getElementById("p").innerHTML = text;
+
+        all_hash = hash(number + username + sex + activelife);
+
+	datetoday = new Date();
+    	timenow = datetoday.getTime();
+    	datetoday.setTime(timenow);
+    	myyear = datetoday.getYear() + 1900;
+        //window.alert(all_hash);
+
+        if (sign == all_hash) {
+		if (myyear == activelife) {
+			document.getElementById('result').style.color = 'green';
+            		document.getElementById('result').innerHTML = "证件合法";
+		} else {
+			document.getElementById('result').style.color = 'red';
+            		document.getElementById('result').innerHTML = "证件非法";
+		}
+
+        } else {
+            document.getElementById('result').style.color = 'red';
+            document.getElementById('result').innerHTML = "证件非法";
+        }
+    </Script>
+
+
+    <p align="center">　</p>
+    <hr>
+    <p>
+        <font face="宋体">常用外网链接：<a href="http://jnsgzx.jinan.cn/">济南舜耕中学</a>
+            <a href="../20200404无所不能的开发团队官网/index.htm">无所不能的开发团队</a></font>
+    </p>
+
+</body>
+
+</html>
