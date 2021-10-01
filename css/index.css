@@ -1,0 +1,79 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 首页的近期事件表格 */
+
+.news {
+    height: 100%;
+    width: 100%;
+    table-layout: fixed;
+    /* display: block; */
+    /* margin: 0px, 0px, 0px, 0px; */
+}
+
+.news li {
+    margin: 20px;
+}
+
+
+/* “校园风采”图片 */
+
+.campus_img {
+    width: 500px;
+    height: 332px;
+}
+
+
+/* 部分标题的加粗 */
+
+.title {
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* 安全局介绍以及下面的display */
+
+.display_left {
+    display: table;
+    width: 32%;
+    height: 358px;
+    margin: 10px;
+    font-family: "黑体";
+    float: left;
+    /* ------------- */
+    display: flex;
+    /*定义body的元素垂直居中*/
+    align-items: center;
+    /*定义body的里的元素水平居中*/
+    justify-content: center;
+}
+
+.display_right {
+    display: table;
+    width: 32%;
+    height: 500px;
+    margin: 10px;
+    font-family: "黑体";
+    float: right;
+    /* ------------- */
+    display: flex;
+    /*定义body的元素垂直居中*/
+    align-items: center;
+    /*定义body的里的元素水平居中*/
+    justify-content: center;
+}
+
+.clear {
+    clear: both;
+}
+
+.button {
+    float: right;
+}
