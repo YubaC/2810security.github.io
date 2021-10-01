@@ -78,7 +78,7 @@ body {
     float: right;
 }
 
-@media screen and (max-width: 599px) {
+@media only screen and (max-width: 1510px) {
     .display_right,
     .display_left {
         float: none;
