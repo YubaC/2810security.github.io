@@ -56,15 +56,13 @@ td {
  ---------------------- */
 
 @media screen and (max-width: 599px) {
-    .col {
+    body {
         float: none;
         /* 解除float浮动，排成一纵列 */
         margin-left: 0;
         /* 左外边距设为0 */
         width: auto;
         /* 宽度填满（重置百分比%） */
-    }
-    .row {
         padding: 0 8px;
         /* 设置左右各8px的内边距 */
     }
