@@ -56,13 +56,12 @@ td {
  ---------------------- */
 
 @media only screen and (max-width: 599px) {
-    html {
-        font-size: 30px !important;
-    }
-    .fontsize_4 {
-        font-size: 30px;
-    }
+    html,
+    .fontsize_4,
     .fontsize_6 {
-        font-size: 34px;
+        font-size: 1.5em;
+    }
+    .titleimage {
+        width: 100%;
     }
 }

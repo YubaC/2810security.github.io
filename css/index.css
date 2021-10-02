@@ -7,14 +7,23 @@ body {
 }
 
 
-/* 首页的近期事件表格 */
+/* 首页的近期事件 */
 
 .news {
     height: 100%;
     width: 100%;
-    table-layout: fixed;
+    /* table-layout: fixed; */
     /* display: block; */
     /* margin: 0px, 0px, 0px, 0px; */
+    /* float: left; */
+    display: flex;
+    justify-content: center;
+}
+
+div.display_news {
+    width: 49%;
+    border: 4px;
+    border-style: double;
 }
 
 .news li {
@@ -26,14 +35,16 @@ body {
 
 .campus_img {
     width: 100%;
-    height: 332px;
+    height: 100%;
 }
 
 
 /* 部分标题的加粗 */
 
 .title {
+    /* 文字加粗 */
     font-weight: bold;
+    /* 居中 */
     text-align: center;
 }
 
@@ -49,9 +60,9 @@ body {
     float: left;
     /* ------------- */
     display: flex;
-    /*定义body的元素垂直居中*/
+    /*定义div的元素垂直居中*/
     align-items: center;
-    /*定义body的里的元素水平居中*/
+    /*定义div的里的元素水平居中*/
     justify-content: center;
 }
 
@@ -64,9 +75,9 @@ body {
     float: right;
     /* ------------- */
     display: flex;
-    /*定义body的元素垂直居中*/
+    /*定义div的元素垂直居中*/
     align-items: center;
-    /*定义body的里的元素水平居中*/
+    /*定义div的里的元素水平居中*/
     justify-content: center;
 }
 
@@ -82,10 +93,21 @@ body {
     .display_right,
     .display_left {
         float: none;
-        /* 解除float浮动，排成一纵列 */
-        /* margin-left: 0; */
-        /* 左外边距设为0 */
-        /* width: auto; */
-        /* 宽度填满（重置百分比%） */
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .display_right,
+    .display_left {
+        width: 100% !important;
+    }
+    img {
+        width: 100% !important;
+    }
+    .news {
+        display: block;
+    }
+    div.display_news {
+        width: 98%;
     }
 }
