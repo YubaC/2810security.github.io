@@ -24,6 +24,7 @@ div.display_news {
     width: 49%;
     border: 4px;
     border-style: double;
+    margin: 40px, 0px, 0px, 0px;
 }
 
 .news li {
