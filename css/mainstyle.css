@@ -56,7 +56,11 @@ td {
  ---------------------- */
 
 @media only screen and (max-width: 599px) {
-    body {
-        font-size: 300%;
+    html {
+        font-size: 300% !important;
+    }
+    .fontsize_4,
+    .fontsize_6 {
+        font-size: larger;
     }
 }
