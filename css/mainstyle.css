@@ -55,17 +55,8 @@ td {
   屏幕宽度在599px以下时使用（用于智能手机）
  ---------------------- */
 
-@media screen and (max-width: 599px) {
-    .col {
-        float: none;
-        /* 解除float浮动，排成一纵列 */
-        margin-left: 0;
-        /* 左外边距设为0 */
-        width: auto;
-        /* 宽度填满（重置百分比%） */
-    }
-    .row {
-        padding: 0 8px;
-        /* 设置左右各8px的内边距 */
+@media only screen and (max-width: 599px) {
+    body {
+        font-size: 300%;
     }
 }
