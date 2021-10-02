@@ -52,10 +52,10 @@ td {
 
 
 /* ----------------------
-  屏幕宽度在960px以下时使用（用于智能手机）
+  屏幕宽度在599px以下时使用（用于智能手机）
  ---------------------- */
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 599px) {
     html {
         font-size: 30px !important;
     }
