@@ -1,0 +1,207 @@
+﻿<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>证件办理-执勤证-2代</title>
+
+    <!-- 用户分析统计 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji0.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/fzxiysjw.js"></script>
+</head>
+
+<body background="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/desalination2.jpg">
+
+    <table border="0" width="100%" id="table2">
+        <tr>
+            <td align="center">
+
+                <p>　</p>
+                <table border="0" width="100%" id="table5">
+                    <tr>
+                        <td align="center" width="96%">
+                            <img border="0" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/title.jpg" width="1000" height="200">
+                        </td>
+                    </tr>
+                </table>
+                <font face="华文中宋">团结紧张 严肃活泼</font>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1" width="100%" id="table3">
+        <tr>
+            <td width="100" align="center"><a href="../../index.htm">首页</a></td>
+            <td width="100" align="center"><a href="../../下属机构/下属机构.htm">下属机构</a></td>
+            <td width="100" align="center"><a href="../../法律规章/法律规章.htm">班纪校规</a></td>
+            <td width="100" align="center"><a href="../../监督举报/监督举报.htm">监督举报</a></td>
+            <td align="center" width="100"><a href="../../审查巡察/审查巡察.htm">审查巡察</a></td>
+            <td align="center" width="100"><a href="../../服务大厅/服务大厅.htm">服务大厅</a></td>
+        </tr>
+    </table>
+    <p align="center">
+        <font size="6" face="华文中宋">证件办理-工作证</font>
+    </p>
+    <p>
+        济南舜耕中学二十八级十班安全局工作证<br>工作证是安全局成员证明身份的证件。如有丢失，应及时补办。<br>请务必按照黏贴指南进行工作证的黏贴操作！<br><a href='https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io@latest/服务大厅/证件办理/documents/工作证黏贴指南.docx'>查看黏贴指南</a>
+    </p>
+
+    <p>
+        注：打印完成后不得对证件进行涂改。否则证件无效。
+    </p>
+    <p <form action="/demo/demo_form.asp">
+        请输入编号:<br>
+        <input type="text" name="number" id="number" onchange="hide()">
+        <br> 请输入性名:<br>
+        <input type="text" name="name" id="name" onchange="hide()">
+        <br> 请输入性别:<br>
+        <input type="text" name="sex" id="sex" onchange="hide()">
+        <br> 请输入部门:<br>
+        <input type="text" name="department" id="department" onchange="hide()">
+        <br><br>
+        </form>
+        <button id='exportBtn'>生成工作证</button>
+        <br>
+        <button id='download' style="display:none">下载工作证</button>
+        <p id='QRp' style="display:none">
+            您的证件二维码:
+        </p>
+        <div id="qrcode" style="width:100px; height:100px; margin-top:15px; ">
+        </div>
+
+        <canvas id="myCanvas" width="163" height="244"></canvas>
+
+        <hr>
+        <p align="left">
+            <font face="宋体">常用外网链接：<a href="http://jnsgzx.jinan.cn/">济南舜耕中学</a></font>
+        </p>
+
+</body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/KeeeX/qrcodejs/qrcode.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.1/jspdf.debug.js"></script> -->
+<script>
+    qrcode = new QRCode(document.getElementById("qrcode"), {
+        width: 200,
+        height: 200
+    });
+    reloadinfo();
+
+    function reloadinfo() {
+        name = document.getElementById("name").value;
+        sex = document.getElementById("sex").value;
+        number = document.getElementById("number").value;
+        department = document.getElementById("department").value;
+
+        name = name.toString();
+        sex = sex.toString();
+        number = number.toString();
+        department = department.toString();
+
+        name2 = encodeURI(encodeURI(name));
+        sex2 = encodeURI(encodeURI(sex));
+        department2 = encodeURI(encodeURI(department));
+    }
+
+
+    function hide() {
+        document.getElementById('download').style.display = 'none'
+        document.getElementById('QRp').style.display = 'none'
+    }
+
+    function show() {
+        document.getElementById('download').style.display = 'block'
+        document.getElementById('QRp').style.display = 'block'
+    }
+
+    var I64BIT_TABLE =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-'.split('');
+
+    function hash(input) {
+        var hash = 5381;
+        var i = input.length - 1;
+        if (typeof input == 'string') {
+            for (; i > -1; i--)
+                hash += (hash << 5) + input.charCodeAt(i);
+        } else {
+            for (; i > -1; i--)
+                hash += (hash << 5) + input[i];
+        }
+        var value = hash & 0x7FFFFFFF;
+        var retValue = '';
+        do {
+            retValue += I64BIT_TABLE[value & 0x3F];
+        }
+        while (value >>= 6);
+        return retValue;
+    }
+
+    function QRonload(inputtext) {
+
+        qrcode.makeCode(inputtext);
+
+    }
+
+    function makeCode() {
+        qrimg = document.getElementById('qrcode').lastChild;
+        console.log(qrimg);
+        canvas = document.createElement('CANVAS');
+        canvas.width = 200
+        canvas.height = 200
+
+        cxt = canvas.getContext('2d');
+
+        cxt.drawImage(qrimg, 0, 0, 200, 200);
+        cxt.font = '20px Arial';
+        cxt.fillStyle = "black";
+
+        dataURL = canvas.toDataURL('image/png', 1.0);
+        canvas = null;
+    }
+
+    exportBtn.onclick = function() {
+        reloadinfo();
+        QRtext = "https://yubac.github.io/2810security.github.io/SecurityServices/verify2.html?" + 'name=' + name2 + '&sex=' + sex2 + '&number=' + number + '&department=' + department2 + '&sign=' + hash(number + name2 + sex2 + department2);
+        QRonload(QRtext);
+        //window.alert(number + name2 + sex2 + myyear);
+
+        show();
+    }
+
+    download.onclick = function() {
+
+        //var imgData = ' ';
+        //var doc = new jspdf.jsPDF('a4 ', 'mm ');
+        doc = new jspdf.jsPDF('a4', 'mm');
+        //doc = new jsPDF('a4 ', 'mm ');
+        doc.addFont('fzxiysjw.ttf', 'fzxiysjw', 'normal');
+        doc.setFont('fzxiysjw');
+        doc.setFontSize(16);
+
+        img = 'https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io@latest/服务大厅/证件办理/images/formwork5.jpg'
+            // img = 'images/formwork5.jpg'
+        doc.addImage(img, 'JPEG', 0, 0, 210, 297);
+        doc.addPage();
+        img = 'https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io@latest/服务大厅/证件办理/images/formwork5.jpg'
+            // img = 'images/formwork6.jpg'
+        doc.addImage(img, 'JPEG', 0, 0, 210, 297);
+
+        //buildpdf('formwork.jpg');
+
+        QRonload(QRtext);
+        //alert(QRtext);
+        makeCode();
+        doc.addImage(dataURL, 'PNG', 105.4 + 6, 160 + 10, 60.25, 60.25);
+        doc.text(125, 26.00 + 9.50 * 0, name);
+        doc.text(125, 26.00 + 9.50 * 1, sex);
+        doc.text(125, 26.00 + 9.50 * 2, '二十八级十班');
+        doc.text(125, 26.00 + 9.50 * 3, department);
+        doc.text(125, 26.00 + 9.50 * 4, '干员');
+        doc.text(130, 26.00 + 9.50 * 5 - 0.4, '2017.9.1');
+        doc.text(125, 115, number);
+        doc.save('工作证.pdf');
+        //250.75
+    }
+</script>
+
+</html>

@@ -1,0 +1,173 @@
+﻿<html>
+<!-- ?name=0&sex=0&number=28100000&activelife=2021&sign=VrNCmB -->
+<!-- ?name=0&sex=0&number=28100000&activelife=2020&sign=0EKyq -->
+
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>证件查询</title>
+
+    <!-- 网站排版 -->
+    <link rel="stylesheet" type="text/css" href="../css/mainstyle.css">
+
+    <!--l2d调用-->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <style>
+        #github svg {
+            transition: all 1s;
+            fill: #222;
+            color: #fff;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: 0;
+            width: 80px;
+            height: 80px;
+        }
+        
+        #github:hover svg {
+            width: 160px;
+            height: 160px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <img class="titleimage" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/title.jpg">
+    <p class="titletext">团结紧张 严肃活泼</p>
+
+    <hr>
+
+    <header>
+        <nav>
+            <table>
+                <tr>
+                    <td><a href="../index.htm">首页</a></td>
+                    <td><a href="../下属机构/下属机构.htm">下属机构</a></td>
+                    <td><a href="../法律规章/法律规章.htm">法律规章</a></td>
+                    <td><a href="../监督举报/监督举报.htm">监督举报</a></td>
+                    <td><a href="../审查巡察/审查巡察.htm">审查巡察</a></td>
+                    <td><a href="../服务大厅/服务大厅.htm">服务大厅</a></td>
+                </tr>
+            </table>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <h1 id='p'></h1>
+        <h1 id='result'></h1>
+        <!-- <button type="button" onclick='document.getElementById("p").innerHTML =getUrlParam("name") '>点击我！</button> -->
+
+        <Script language="javascript">
+            function getUrlParam(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象  
+                var r = window.location.search.substr(1).match(reg); //匹配目标参数   
+                if (r != null) return unescape(r[2]);
+                return null; //返回参数值  
+            }
+
+            var I64BIT_TABLE =
+                'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-'.split('');
+
+            function hash(input) {
+                var hash = 5381;
+                var i = input.length - 1;
+                if (typeof input == 'string') {
+                    for (; i > -1; i--)
+                        hash += (hash << 5) + input.charCodeAt(i);
+                } else {
+                    for (; i > -1; i--)
+                        hash += (hash << 5) + input[i];
+                }
+                var value = hash & 0x7FFFFFFF;
+                var retValue = '';
+                do {
+                    retValue += I64BIT_TABLE[value & 0x3F];
+                }
+                while (value >>= 6);
+                return retValue;
+            }
+
+            number = getUrlParam("number");
+            username = getUrlParam("name");
+            sex = getUrlParam("sex");
+            department = getUrlParam("department");
+            sign = getUrlParam("sign");
+
+            //var userame2 = decodeURI(username);
+            //var sex2 = decodeURI(sex);
+
+            text = "查询结果：";
+            text += "<br>";
+            text += "姓名：" + decodeURI(decodeURI(username));
+            text += "<br>";
+            text += "性别：" + decodeURI(decodeURI(sex));
+            text += "<br>";
+            text += "班级：二十八级十班";
+            text += "<br>";
+            text += "部门：" + decodeURI(decodeURI(department));
+            text += "<br>";
+            text += "职位：干员";
+            text += "<br>";
+            text += "入职日期：2017.9.1";
+            text += "<br>";
+            text += "签发部门：安全局人事处";
+            text += "<br>";
+            text += "证件编号：" + number;
+            text += "<br>";
+
+            // Base64解密：window.atob();加密：window.btoa();
+            //text += "有效期限：" + window.atob(activelife);
+            document.getElementById("p").innerHTML = text;
+
+            all_hash = hash(number + encodeURI(username) + encodeURI(sex) + encodeURI(department));
+
+            //window.alert(number + username + sex + activelife);
+
+            if (sign == all_hash) {
+                document.getElementById('result').style.color = 'green';
+                document.getElementById('result').innerHTML = "证件合法";
+
+            } else {
+                document.getElementById('result').style.color = 'red';
+                document.getElementById('result').innerHTML = "证件非法";
+            }
+        </Script>
+
+    </main>
+
+    <footer>
+
+        <div class="clear"></div>
+        <p>　</p>
+        <hr>
+
+        <div class="button">
+            <button type="button" onclick="document.documentElement.scrollTop=0">返回顶部</button>
+            <button type="button" onclick=window.print()>打印本页</button>
+        </div>
+
+        <div class="clear"></div>
+
+        <p>
+            常用外网链接：<a href="http://jnsgzx.jinan.cn/">济南舜耕中学</a>
+        </p>
+
+    </footer>
+
+    <!--l2d人物动画-->
+    <div>
+        <script src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/autoload.js"></script>
+    </div>
+
+    <!-- 用户分析统计 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji0.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji1.js"></script>
+</body>
+
+</html>
