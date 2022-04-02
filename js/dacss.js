@@ -1,10 +1,25 @@
+function getQinMingJieDate(fullYear) {
+    //清明节的日期是不固定的，规律是：闰年开始的前2年是4月4日，闰年开始的第3年和第4年是4月5日
+    if (isLeapYear(fullYear) || isLeapYear(fullYear - 1)) {
+        return 04;
+    } else {
+        return 05;
+    }
+}
+//判断是否是闰年
+function isLeapYear(Year) {
+    if (((Year % 4) == 0) && ((Year % 100) != 0) || ((Year % 400) == 0)) {
+        return (true);
+    } else { return (false); }
+}
+
 function getCSS() {
     datetoday = new Date();
     timenow = datetoday.getTime();
     datetoday.setTime(timenow);
     myday = datetoday.getDate();
     mymonth = datetoday.getMonth() + 1;
-    if (myday == 4) {
+    if (myday == getQinMingJieDate(datetoday.getYear() + 1900)) {
         if (mymonth == 4) {
             display = "css/1.css";
         }
