@@ -1,4 +1,11 @@
 {
     "compile-hero.disable-compile-files-on-did-save-code": true,
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "Disabled",
+    "audioCues.lineHasBreakpoint": "off",
+    "audioCues.lineHasInlineSuggestion": "off",
+    "audioCues.lineHasFoldedArea": "off",
+    "audioCues.lineHasError": "off",
+    "audioCues.noInlayHints": "off",
+    "audioCues.onDebugBreak": "off",
+    "audioCues.volume": 0
 }
