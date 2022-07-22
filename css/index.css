@@ -122,4 +122,7 @@ canvas {
     div.display_news {
         width: 98%;
     }
+    .fontsize_4 {
+        margin: auto;
+    }
 }
