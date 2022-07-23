@@ -5,6 +5,7 @@
     padding-top: 30px;
     padding: 20px;
     position: relative;
+    box-shadow: 0 0 15px black;
 }
 
 #titles {
@@ -12,6 +13,10 @@
     font-size: x-large;
     color: red;
     text-align: center;
+}
+
+#titles>h1:first-child {
+    margin-top: 100px;
 }
 
 #titles>h1:last-child {
@@ -26,6 +31,9 @@
 #main_body {
     font-family: 'STFangsong';
     font-size: xx-large;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 150px;
 }
 
 #sign_father {
