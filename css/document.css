@@ -15,8 +15,18 @@
     text-align: center;
 }
 
-#titles>h1:first-child {
+#title_red {
+    margin: auto;
+    width: 80%;
     margin-top: 100px;
+    text-align: justify;
+    /* width: 80%; */
+}
+
+#title_red:after {
+    display: inline-block;
+    width: 100%;
+    content: '';
 }
 
 #titles>h1:last-child {
