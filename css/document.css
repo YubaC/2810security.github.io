@@ -31,8 +31,8 @@
 #main_body {
     font-family: 'STFangsong';
     font-size: xx-large;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-bottom: 150px;
 }
 
@@ -42,7 +42,7 @@
 }
 
 #sign {
-    margin: 20px;
+    /* margin: 20px; */
     position: absolute;
     right: 10px;
     top: 10px;
