@@ -8,7 +8,7 @@ function IsPc() { //是PC→false，是移动端→true
 }
 
 if (IsPc()) {
-    // document.getElementById("title_red").innerText = "济南舜耕中学二十八级十班安全局";
+    document.getElementById("title_red").innerText = "济南舜耕中学二十八级十班安全局";
     document.getElementById("document").style.marginLeft = "3%";
     document.getElementById("document").style.marginRight = "3%";
 
