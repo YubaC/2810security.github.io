@@ -52,6 +52,6 @@ if (!IsPc()) {
     document.onmousemove = doMouseMove;
 
     document.write('<div ID="myDiv">');
-    document.write('<img id="myImg" src="https://yubac.github.io/2810security.github.io/images/mouse.png" STYLE="position:absolute;TOP:0pt;LEFT:0pt;width=103;height=28;Z-INDEX:2;">');
+    document.write('<img id="myImg" src="https://fastly.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/mouse.png" STYLE="position:absolute;TOP:0pt;LEFT:0pt;width=103;height=28;Z-INDEX:2;">');
     document.write('</div>');
 }

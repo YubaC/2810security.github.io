@@ -8,7 +8,7 @@ for (i of imgs) {
     console.log(i);
     i.setAttribute("data-original", i.src);
     // i.setAttribute("class", "lazyloading");
-    i.src = "https://yubac.github.io/2810security.github.io/images/loading.jpg";
+    i.src = "https://fastly.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/loading.jpg";
 }
 
 // https://www.jb51.net/article/226958.htm
