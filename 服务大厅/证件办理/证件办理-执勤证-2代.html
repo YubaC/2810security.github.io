@@ -194,7 +194,7 @@
 
     exportBtn.onclick = function() {
         reloadinfo();
-        QRtext = "https://fastly.jsdelivr.net/gh/YubaC/2810security.github.io@latest/SecurityServices/verify.html?" + 'name=' + name2 + '&sex=' + sex2 + '&number=' + number + '&activelife=' + myyear + '&sign=' + hash(number + name2 + sex2 + myyear);
+        QRtext = "https://yubac.github.io/2810security.github.io/SecurityServices/verify.html?" + 'name=' + name2 + '&sex=' + sex2 + '&number=' + number + '&activelife=' + myyear + '&sign=' + hash(number + name2 + sex2 + myyear);
         QRonload(QRtext);
         //window.alert(number + name2 + sex2 + myyear);
 
