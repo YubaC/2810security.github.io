@@ -7,6 +7,8 @@ function IsPc() { //是PC→false，是移动端→true
     })
 }
 
+document.getElementById("sign_father").getElementsByTagName("img")[0].src = "https://yubac.github.io/2810security.github.io/images/stamp.svg";
+
 if (IsPc()) {
     // document.getElementById("title_red").innerText = "济南舜耕中学二十八级十班安全局";
     document.getElementById("document").style.marginLeft = "3%";

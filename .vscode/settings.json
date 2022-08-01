@@ -8,5 +8,7 @@
     "audioCues.noInlayHints": "off",
     "audioCues.onDebugBreak": "off",
     "audioCues.volume": 0,
-    "livePreview.defaultPreviewPath": "/公示栏/20210803 2021年第一季度实验室试剂购买公示表/20210803 2021年第一季度实验室试剂购买公示表.html"
+    "livePreview.defaultPreviewPath": "/公示栏/20210803 2021年第一季度实验室试剂购买公示表/20210803 2021年第一季度实验室试剂购买公示表.html",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
 }
