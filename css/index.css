@@ -105,6 +105,7 @@ canvas {
     .display_right,
     .display_left {
         float: none;
+        margin: auto;
     }
 }
 
@@ -113,7 +114,7 @@ canvas {
     .display_left {
         width: 100% !important;
     }
-    img {
+    img:not(#myImg) {
         width: 100% !important;
     }
     .news {
