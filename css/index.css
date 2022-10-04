@@ -112,6 +112,7 @@ canvas {
 @media only screen and (max-width: 599px) {
     .display_right,
     .display_left {
+        display: unset;
         width: 100% !important;
     }
     img:not(#myImg) {
