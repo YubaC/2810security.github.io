@@ -79,9 +79,8 @@
     </style>
 
     <div id="text">
-        字体：<button id="xx-large" onclick="ChangeFontSize(id)">大</button>
-        <button id="x-large" onclick="ChangeFontSize(id)">中</button>
-        <button id="large" onclick="ChangeFontSize(id)">小</button>
+        <p style="font-size: large;"><span class="font index_switchsize">【字体：<span  id="bigger" style="cursor:pointer;">大</span> <span id="medium" style="cursor:pointer;">中</span> <span id="smaller" style="cursor:pointer;">小</span>】</span> &emsp; <span style="cursor:pointer;" class="font printIco"
+                onclick="javascript:window.print()">打印</span></p>
 
         <h1 align="center">纪念中国人民志愿军抗美援朝出国作战72周年</h1>
 
@@ -109,15 +108,20 @@
 
     <!-- 字体大小 -->
     <script>
-        document.getElementById("x-large").disabled = true;
-        document.getElementById("text").style.fontSize = "x-large";
+        bigger = document.getElementById("bigger");
+        medium = document.getElementById("medium");
+        smaller = document.getElementById("smaller");
 
-        function ChangeFontSize(id) {
-            document.getElementById("text").style.fontSize = id;
-            document.getElementById("xx-large").disabled = false;
-            document.getElementById("x-large").disabled = false;
-            document.getElementById("large").disabled = false;
-            document.getElementById(id).disabled = true;
+        document.getElementById("text").style.fontSize = "x-large";
+        // document.getElementById("x-large").disabled = true;
+        smaller.onclick = function() {
+            document.getElementById("text").style.fontSize = "large";
+        }
+        medium.onclick = function() {
+            document.getElementById("text").style.fontSize = "x-large";
+        }
+        bigger.onclick = function() {
+            document.getElementById("text").style.fontSize = "xx-large";
         }
     </script>
     <hr>
