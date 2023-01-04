@@ -43,6 +43,12 @@
     <p style="text-align: center">湛蓝的天空更凸显熠熠生辉的朝阳</p>
 
     <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
         .content {
             position: absolute;
             top: 30px;
@@ -66,68 +72,91 @@
         .content-father {
             position: relative;
             margin-bottom: 50px;
+            border: 1px solid black;
+        }
+        /* 移动端适配 */
+        
+        @media only screen and (max-width: 599px) {
+            .content-father {
+                font-size: smaller;
+                margin-bottom: 100px;
+            }
+            /* 所有content-father内的第一个图片width为100vw */
+            .content-father>img:first-child {
+                width: 100vw;
+            }
+            /* title图片 */
+            /* #table2>tbody:nth-child(1)>tr:nth-child(1)>td:nth-child(1)>p:nth-child(1)>img:nth-child(1) {
+                width: 100vw;
+            } */
+            .content {
+                width: 90%;
+                margin: auto;
+                top: 5px;
+                left: 5%;
+            }
         }
     </style>
 
     <div class="content-father">
         <img src="教学区展示图.jpg" class="img1" width="1400" alt=" ">
         <div class="content">
-          <p><img src="教学区标志.png" width="100"></p>
+            <p><img src="教学区标志.png" width="100"></p>
             <h1 style="text-align: center; color: white">——教学区——</h1>
             <p style="text-align: center;color: white">教学区是校园的一部分</p>
             <p style="text-align: center;color: white">朝阳用光辉照亮了蓝天，与地上的红楼构成了一幅壮丽的画卷</p>
             <p><img src="书.png" width="50"></p>
             <p style="text-align: center;color: white">了解更多</p>
             <br/>
-      </div>
-</div>
+        </div>
+    </div>
 
     <div class="content-father">
         <img src="家属院展示图.jpg" class="img1" width="1400" alt=" ">
         <div class="content">
-          <p><img src="教学区标志.png" width="100"></p>
+            <p><img src="教学区标志.png" width="100"></p>
             <h1 style="text-align: center;color: white">——家属院——</h1>
             <p style="text-align: center;color: white">家属院是校园的一部分</p>
             <p style="text-align: center;color: white">曲径通幽之地，隐藏着一处世外桃源般的菜园</p>
             <p><img src="书.png" width="50"></p>
             <p style="text-align: center;color: white">了解更多</p>
-      </div>
-</div>
+        </div>
+    </div>
 
     <div class="content-father"><img src="停车场展示图.JPG" class="img1" width="1400" alt=" ">
         <div class="content">
-          <p><img src="教学区标志.png" width="100"></p>
+            <p><img src="教学区标志.png" width="100"></p>
             <h1 style="text-align: center;color: white">——停车场——</h1>
             <p style="text-align: center;color: white">停车场是校园的一部分</p>
             <p style="text-align: center;color: white">隔离帐篷今犹在,不见当年红木廊</p>
             <p><img src="书.png" width="50"></p>
             <p style="text-align: center;color: white">了解更多</p>
-      </div>
-</div>
-	
-<div class="content-father"><img src="舜玉北区展示图.JPG" class="img1" width="1400" alt=" ">
+        </div>
+    </div>
+
+    <div class="content-father"><img src="舜玉北区展示图.JPG" class="img1" width="1400" alt=" ">
         <div class="content">
-          <p><img src="教学区标志.png" width="100"></p>
+            <p><img src="教学区标志.png" width="100"></p>
             <h1 style="text-align: center;color: white">——舜玉北区——</h1>
             <p style="text-align: center;color: white">校园外的一个居民区</p>
             <p style="text-align: center;color: white">我校学生最大集散地之一</p>
             <p><img src="书.png" width="50"></p>
             <p style="text-align: center;color: white">了解更多</p>
-      </div>
-</div>
-	
-<div class="content-father"><img src="舜玉南区展示图.JPG" class="img1" width="1400" alt=" ">
+        </div>
+    </div>
+
+    <div class="content-father"><img src="舜玉南区展示图.JPG" class="img1" width="1400" alt=" ">
         <div class="content">
-          <p><img src="教学区标志.png" width="100"></p>
+            <p><img src="教学区标志.png" width="100"></p>
             <h1 style="text-align: center;color: white">——舜玉南区——</h1>
             <p style="text-align: center;color: white">校园外的一个居民区</p>
             <p style="text-align: center;color: white">我校学生最大集散地之一</p>
             <p><img src="书.png" width="50"></p>
             <p style="text-align: center;color: white">了解更多</p>
-      </div>
-</div>
-	
-<footer>
+        </div>
+    </div>
+
+    <footer>
 
         <div class="clear"></div>
         <p>　</p>
