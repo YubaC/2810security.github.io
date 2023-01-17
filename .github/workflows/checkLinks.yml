@@ -25,8 +25,9 @@ jobs:
 
       - name: Check Links...
         run: |
-          pip install -r tools/checkLinks/checkLinks-requirements.txt
-          python tools/checkLinks/checkLinks.py
+          cd tools/checkLinks
+          pip install -r checkLinks-requirements.txt
+          python checkLinks.py
 
       - name: Check if links are OK...
         id: errors
