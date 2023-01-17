@@ -5,7 +5,7 @@ on:
   # 有pull request时触发
   pull_request
 
-  jobs:
+jobs:
   check-HTML-Links:
     runs-on: windows-2019
     steps:
