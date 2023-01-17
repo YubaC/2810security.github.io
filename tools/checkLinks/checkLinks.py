@@ -98,7 +98,9 @@ def checkLink(file, i, link, start_path):
 
 if __name__ == '__main__':
     # 检查仓库文件夹下的所有文件
-    repo_path = os.path.abspath(os.path.abspath(os.path.dirname(os.getcwd())))
+    repo_path = os.path.abspath(os.path.dirname(os.getcwd()))
+    os.chdir(repo_path)
+    repo_path = os.path.abspath(os.path.dirname(os.getcwd()))
     os.chdir(repo_path)
 
     f = open('checkLinks.md', 'w', encoding='utf-8')
