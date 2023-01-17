@@ -81,7 +81,7 @@ def checkLink(file, i, link, start_path):
                 pass
             else:
                 if not os.path.exists(link):
-                    print(file, i, link)
+                    # print(file, i, link)
                     with open(os.path.join(start_path, 'checkLinks.md'), 'a', encoding='utf-8') as f:
                         f.write('* [ ]  '+file + ', line ' + str(i) + ', ' + link + '\r\n')
                         f.close()
@@ -90,7 +90,7 @@ def checkLink(file, i, link, start_path):
             os.chdir(start_path)
         
     except:
-        print(file, i, link)
+        # print(file, i, link)
         with open(os.path.join(start_path, 'checkLinks.md'), 'a', encoding='utf-8') as f:
                 f.write('* [ ]  '+file + ', line ' + str(i) + ', ' + link + '\r\n')
                 f.close()
@@ -106,5 +106,5 @@ if __name__ == '__main__':
     f = open('checkLinks.md', 'w', encoding='utf-8')
     f.close()
 
-    print("Checking Links in " + repo_path)
+    # print("Checking Links in " + repo_path)
     checkLinks(repo_path)
