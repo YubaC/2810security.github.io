@@ -57,15 +57,17 @@ def checkLink(file, i, link, start_path):
         # print(link)
         if link.startswith('#') or link.startswith('javascript:'):
             pass
-        elif link.startswith('http'):
-            # file转换为相对路径
-            file = os.path.relpath(file, start_path)
 
-            r = requests.get(link)
-            if r.status_code != 200:
-                with open(os.path.join(start_path, 'checkLinks.md'), 'a', encoding='utf-8') as f:
-                    f.write('* [ ]  '+file + ', line ' + str(i) + ', ' + link + '\r\n')
-                    f.close()
+        # !检查外部链接是否有效太慢了，暂时不检查
+        elif link.startswith('http'): pass
+            # # file转换为相对路径
+            # file = os.path.relpath(file, start_path)
+
+            # r = requests.get(link)
+            # if r.status_code != 200:
+            #     with open(os.path.join(start_path, 'checkLinks.md'), 'a', encoding='utf-8') as f:
+            #         f.write('* [ ]  '+file + ', line ' + str(i) + ', ' + link + '\r\n')
+            #         f.close()
         elif link.startswith('mailto:'):
             pass
         else:
