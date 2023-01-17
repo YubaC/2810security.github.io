@@ -33,7 +33,7 @@ jobs:
         id: errors
         uses: juliangruber/read-file-action@v1
         with:
-          path: ../checkLinks.md
+          path: ./checkLinks.md
       - name: Echo if need to update
         run: echo "${{ steps.errors.outputs.content }}"
 
