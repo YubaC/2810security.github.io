@@ -3,7 +3,9 @@ name: Check HTML Links
 # 触发 workflow 的事件
 on:
   # 有pull request时触发
-  pull_request
+  pull_request:
+  
+  workflow_dispatch:
 
 jobs:
   check-HTML-Links:
@@ -21,7 +23,7 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Check received e-mails...
+      - name: Check Links...
         run: |
           python tools/checkLinks.py
 
