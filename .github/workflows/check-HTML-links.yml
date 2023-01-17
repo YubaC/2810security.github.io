@@ -34,7 +34,7 @@ jobs:
         uses: juliangruber/read-file-action@v1
         with:
           path: ./checkLinks.md
-      - name: Echo if need to update
+      - name: Echo Bad Links...
         run: echo "${{ steps.errors.outputs.content }}"
 
       - if: steps.errors.outputs.content != ''
