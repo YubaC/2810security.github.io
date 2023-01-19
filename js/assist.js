@@ -3431,7 +3431,7 @@
         }
     };
 
-    var styles$1 = "* {\n  cursor: url(\"https://fastly.jsdelivr.net/gh/YubaC/2810security.github.io@latest/allaw.cur\"), auto !important;\n}\n\na {\n  cursor: url(\"./linkaw.cur\"), auto !important;\n}";
+    var styles$1 = "* {\n  cursor: url(\"https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/allaw.cur\"), auto !important;\n}\n\na {\n  cursor: url(\"./linkaw.cur\"), auto !important;\n}";
 
     var CursorAuto = {
         init: function init(core) {

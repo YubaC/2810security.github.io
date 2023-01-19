@@ -25,10 +25,10 @@
     <!--l2d调用-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
     <!-- 用户分析统计 -->
-    <script type="text/javascript" src="https://fastly.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji0.js"></script>
-    <script type="text/javascript" src="https://fastly.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji1.js"></script>
+    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji0.js"></script>
+    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji1.js"></script>
     <!-- 鼠标指针 -->
-    <script src="https://fastly.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/mouse.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/mouse.js"></script>
 </head>
 ```
 有的网页内的此部分可能还含有如下代码块：
@@ -57,7 +57,7 @@
 ### 2.2. body的background。如：
 
 ```html
-<body background="https://fastly.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/desalination2.jpg"></body>
+<body background="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/desalination2.jpg"></body>
 ```
 
 除首页外的所有网页均应使用这个样式。
@@ -65,12 +65,12 @@
 ### 2.3. 用于无障碍和live2d的代码块。如：
 ```html
 <!-- 无障碍 -->
-<script type="text/javascript" src="https://fastly.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/assist-entry.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/assist-entry.js"></script>
 
 
 <!--l2d人物动画-->
 <div>
-<script src="https://fastly.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/autoload.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/autoload.js"></script>
 </div>
 ```
 
@@ -80,7 +80,7 @@
     <table border="0" width="100%" id="table2">
         <tr>
             <td align="center" width="96%" height="239">
-                <p><img border="0" src="https://fastly.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/title.jpg" width="1000" height="200"></td>
+                <p><img border="0" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/title.jpg" width="1000" height="200"></td>
         </tr>
         <tr>
             <td align="center">
