@@ -23,9 +23,9 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Check Links...
+      - name: Check links...
         run: |
-          cd tools/checkLinks
+          cd Check-Links
           pip install -r checkLinks-requirements.txt
           python checkLinks.py
 
@@ -34,7 +34,8 @@ jobs:
         uses: juliangruber/read-file-action@v1
         with:
           path: ./checkLinks.md
-      - name: Echo Bad Links...
+
+      - name: Echo bad links...
         run: echo "${{ steps.errors.outputs.content }}"
 
       - if: steps.errors.outputs.content != ''
