@@ -4,7 +4,7 @@ name: Check HTML Links
 on:
   # 有pull request时触发
   pull_request:
-
+  push:
   workflow_dispatch:
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
 
       - name: Check links...
         run: |
-          cd Check-Links
+          cd tools/Check-Links
           pip install -r checkLinks-requirements.txt
           python checkLinks.py
 
