@@ -7,7 +7,13 @@
 import os
 import re
 import requests
-import csv
+# import csv
+
+# 忽略的链接，不需要检查
+# 当链接的目标是这里面的文件的时候跳过
+f = open("checkLinks.ignore","r",encoding="utf-8")
+ignores = f.read().splitlines()
+f.close()
 
 # 遍历文件夹内的所有文件
 def checkLinks(path):
@@ -27,6 +33,8 @@ def checkFile(root, file, start_path):
         lines = f.readlines()
         for i, line in enumerate(lines):
             # print(i, line)
+            
+            # i为行号，line为行内容
             checkLine(os.path.join(root, file), i, line, start_path)
         
 # 检查行内的所有链接
@@ -39,6 +47,7 @@ def checkLine(file, i, line, start_path):
 
 # 检查链接是否有效
 def checkLink(file, i, link, start_path):
+    global ignores
     # print(file, i, link)
     # 如果链接是以#开头的，说明是本页内的锚点，不需要检查
     # 如果链接是以javascript:开头的，说明是js脚本，不需要检查
@@ -48,41 +57,56 @@ def checkLink(file, i, link, start_path):
         # print(link)
         if link.startswith('#') or link.startswith('javascript:'):
             pass
-        elif link.startswith('http'):
-            # file转换为相对路径
-            file = os.path.relpath(file, start_path)
 
-            r = requests.get(link)
-            if r.status_code != 200:
-                with open(os.path.join(start_path, 'checkLinks.md'), 'a', encoding='utf-8') as f:
-                    f.write('* [ ]  '+file + ' ' + str(i) + ' ' + link + '\r\n')
-                    f.close()
+        # !检查外部链接是否有效太慢了，暂时不检查
+        elif link.startswith('http'): pass
+            # # file转换为相对路径
+            # file = os.path.relpath(file, start_path)
+
+            # r = requests.get(link)
+            # if r.status_code != 200:
+            #     with open(os.path.join(start_path, 'checkLinks.md'), 'a', encoding='utf-8') as f:
+            #         f.write('* [ ]  '+file + ', line ' + str(i) + ', ' + link + '\r\n')
+            #         f.close()
         elif link.startswith('mailto:'):
             pass
         else:
             # 进入file所在目录
             os.chdir(os.path.dirname(file))
+
             # file转换为相对路径
             file = os.path.relpath(file, start_path)
-            
-            if not os.path.exists(link):
-                print(file, i, link)
-                with open(os.path.join(start_path, 'checkLinks.md'), 'a', encoding='utf-8') as f:
-                    f.write('* [ ]  '+file + ' ' + str(i) + ' ' + link + '\r\n')
-                    f.close()
+
+            # 如果file在ignores内就忽略
+            # 如果link在ignore内也忽略
+            if file in ignores or link in ignores:
+                pass
+            else:
+                if not os.path.exists(link):
+                    # print(file, i, link)
+                    with open(os.path.join(start_path, 'checkLinks.md'), 'a', encoding='utf-8') as f:
+                        f.write('* [ ]  '+file + ', line ' + str(i) + ', ' + link + '\r\n')
+                        f.close()
 
             # 回到初始目录
             os.chdir(start_path)
         
     except:
-        print(file, i, link)
+        # print(file, i, link)
         with open(os.path.join(start_path, 'checkLinks.md'), 'a', encoding='utf-8') as f:
-                f.write('* [ ]  '+file + ' ' + str(i) + ' ' + link + '\r\n')
+                f.write('* [ ]  '+file + ', line ' + str(i) + ', ' + link + '\r\n')
                 f.close()
 
 
 if __name__ == '__main__':
+    # 检查仓库文件夹下的所有文件
+    repo_path = os.path.abspath(os.path.dirname(os.getcwd()))
+    os.chdir(repo_path)
+    repo_path = os.path.abspath(os.path.dirname(os.getcwd()))
+    os.chdir(repo_path)
+
     f = open('checkLinks.md', 'w', encoding='utf-8')
     f.close()
-    # 检查当前文件夹下的所有文件
-    checkLinks(os.getcwd())
+
+    # print("Checking Links in " + repo_path)
+    checkLinks(repo_path)
