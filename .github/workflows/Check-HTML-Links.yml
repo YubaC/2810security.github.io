@@ -29,9 +29,8 @@ jobs:
       - name: Report permissions
         run: |
           echo "GITHUB_TOKEN permissions:"
-          echo "  contents: ${{ github.token_permissions.contents }}"
-          echo "  issues: ${{ github.token_permissions.issues }}"
-          echo "  pull-requests: ${{ github.token_permissions.pull_requests }}"
+          ${{ github.token_permissions }}"
+
       - name: Clone repository
         uses: actions/checkout@v3
 
