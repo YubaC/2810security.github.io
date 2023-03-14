@@ -19,18 +19,11 @@ on:
 permissions:
   issues: write
   pull-requests: write
-  contents: write
 
 jobs:
   Check-HTML-Links:
     runs-on: windows-2019
     steps:
-      # 汇报Github_Token权限
-      - name: Report permissions
-        run: |
-          echo "GITHUB_TOKEN permissions:"
-          ${{ github.token_permissions }}"
-
       - name: Clone repository
         uses: actions/checkout@v3
 
