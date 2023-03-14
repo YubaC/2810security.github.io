@@ -1,4 +1,4 @@
-# 负责检查pull reqests里html文件的Link是否都有效
+# 负责检查pull reqests里html文件的links是否都有效
 name: Check HTML Links
 # 触发 workflow 的事件
 on:
@@ -13,10 +13,6 @@ on:
       - ready_for_review
       - reopened
       - unlocked
-  pull_request_review:
-    types:
-      - submitted
-  pull_request_target:
   push:
   workflow_dispatch:
 
@@ -51,12 +47,13 @@ jobs:
       - name: Echo bad links...
         run: echo "${{ steps.errors.outputs.content }}"
 
-      - if: steps.errors.outputs.content != '' 
-        name: Add comment
-        uses: peter-evans/create-or-update-comment@v1
+      - if: steps.errors.outputs.content != '' && github.event_name == 'pull_request'
+        name: Create comment
+        uses: peter-evans/create-or-update-comment@v2
         with:
-          body: 'Thanks for opening this pull request!'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: "# HTML Links Test Report\n\nHi there!\n\nThank you for your Pull Request! However, we regret to inform you that the following illegal relative connection still exists within your Pull Request: \n\n${{ steps.errors.outputs.content }}\n\nPlease fix these errors. Thank you again for your contribution.\n\nBegonia/Yuba"
+          reactions: "+1"
 
       - if: steps.errors.outputs.content != ''
         run: |
