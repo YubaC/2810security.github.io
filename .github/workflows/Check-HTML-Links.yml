@@ -16,6 +16,9 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  pull-requests: write
+
 jobs:
   Check-HTML-Links:
     runs-on: windows-2019
