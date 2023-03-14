@@ -53,15 +53,16 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const github = require('@actions/github');
             const { data: pullRequest } = await github.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number
+              owner: github.context.repo.owner,
+              repo: github.context.repo.repo,
+              pull_number: github.context.payload.pull_request.number
             });
-            const commentBody = '# HTML Links Test Report\n\nHi there!\n\nThank you for your Pull Request! However, we regret to inform you that the following illegal relative connection still exists within your Pull Request: \n\n${{ steps.errors.outputs.content }}\n\nPlease fix these errors. Thank you again for your contribution.\n\nBegonia/Yuba';
+            const commentBody = '# HTML Links Test Report\n\nHi there!\n\nThank you for your Pull Request! However, we regret to inform you that the following illegal relative connection still exists within your Pull Request:\n\n' + steps.errors.outputs.content + '\n\nPlease fix these errors. Thank you again for your contribution.\n\nBegonia/Yuba';
             await github.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
+              owner: github.context.repo.owner,
+              repo: github.context.repo.repo,
               issue_number: pullRequest.number,
               body: commentBody
             });
