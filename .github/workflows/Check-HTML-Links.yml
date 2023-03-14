@@ -13,6 +13,10 @@ on:
       - ready_for_review
       - reopened
       - unlocked
+  pull_request_review:
+    types:
+      - submitted
+  pull_request_target:
   push:
   workflow_dispatch:
 
@@ -50,7 +54,7 @@ jobs:
       - if: steps.errors.outputs.content != ''
         uses: JoseThen/comment-pr@v1.1.1
         with:
-          comment: "# HTML Links Test Report\n\nHi there!\n\nThank you for your Pull Request! However, we regret to inform you that the following illegal relative connection still exists within your Pull Request: \n\n${{ steps.errors.outputs.content }}\n\nPlease fix these errors. Thank you again for your contribution.\n\nBegonia/Yuba"
+          comment: "# HTML Links Test Report\n\nThank you for your Pull Request! However, we regret to inform you that the following illegal relative connection still exists within your Pull Request: \n\n${{ steps.errors.outputs.content }}\n\nPlease fix these errors. Thank you again for your contribution.\n\nBegonia/Yuba"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - if: steps.errors.outputs.content != ''
