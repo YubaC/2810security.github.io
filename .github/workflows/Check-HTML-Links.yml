@@ -48,10 +48,23 @@ jobs:
         run: echo "${{ steps.errors.outputs.content }}"
 
       - if: steps.errors.outputs.content != '' && github.event_name == 'pull_request'
-        uses: JoseThen/comment-pr@v1.1.1
+        name: Comment on PR
+        uses: actions/github-script@v3
         with:
-          comment: "# HTML Links Test Report\n\nHi there!\n\nThank you for your Pull Request! However, we regret to inform you that the following illegal relative connection still exists within your Pull Request: \n\n${{ steps.errors.outputs.content }}\n\nPlease fix these errors. Thank you again for your contribution.\n\nBegonia/Yuba"
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: pullRequest } = await github.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number
+            });
+            const commentBody = '# HTML Links Test Report\n\nHi there!\n\nThank you for your Pull Request! However, we regret to inform you that the following illegal relative connection still exists within your Pull Request: \n\n${{ steps.errors.outputs.content }}\n\nPlease fix these errors. Thank you again for your contribution.\n\nBegonia/Yuba';
+            await github.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pullRequest.number,
+              body: commentBody
+            });
 
       - if: steps.errors.outputs.content != ''
         run: |
