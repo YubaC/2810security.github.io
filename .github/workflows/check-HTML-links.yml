@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  check-HTML-Links:
+  Check-HTML-Links:
     runs-on: windows-2019
     steps:
       - name: Clone repository
