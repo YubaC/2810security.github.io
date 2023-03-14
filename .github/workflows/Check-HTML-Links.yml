@@ -50,7 +50,7 @@ jobs:
       - name: Echo bad links...
         run: echo "${{ steps.errors.outputs.content }}"
 
-      - if: steps.errors.outputs.content != '' && github.event_name == 'pull_request'
+      - if: steps.errors.outputs.content != '' && github.event_name == 'pull_request_target'
         name: Create comment
         uses: peter-evans/create-or-update-comment@v2
         with:
