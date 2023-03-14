@@ -28,10 +28,6 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v3
 
-      # 检出代码
-      - name: Check out repository code
-        uses: actions/checkout@v3
-
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
@@ -70,6 +66,7 @@ jobs:
 
             Begonia/Yuba
           reactions: "+1"
+          token: ${{ secrets.TOKEN }}
 
       - if: steps.errors.outputs.content != ''
         run: |
