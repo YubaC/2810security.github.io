@@ -51,7 +51,9 @@ jobs:
         name: Create comment
         uses: peter-evans/create-or-update-comment@v2
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
+          comment-author: "Begonia"
           body: "# HTML Links Test Report\n\nHi there!\n\nThank you for your Pull Request! However, we regret to inform you that the following illegal relative connection still exists within your Pull Request: \n\n${{ steps.errors.outputs.content }}\n\nPlease fix these errors. Thank you again for your contribution.\n\nBegonia/Yuba"
           reactions: "+1"
 
