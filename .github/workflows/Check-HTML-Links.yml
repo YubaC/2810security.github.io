@@ -1,4 +1,4 @@
-# 负责检查pull reqests里html文件的links是否都有效
+# 负责检查pull reqests里html文件的Link是否都有效
 name: Check HTML Links
 # 触发 workflow 的事件
 on:
@@ -47,7 +47,7 @@ jobs:
       - name: Echo bad links...
         run: echo "${{ steps.errors.outputs.content }}"
 
-      - if: steps.errors.outputs.content != '' && github.event_name == 'pull_request'
+      - if: steps.errors.outputs.content != ''
         uses: JoseThen/comment-pr@v1.1.1
         with:
           comment: "# HTML Links Test Report\n\nHi there!\n\nThank you for your Pull Request! However, we regret to inform you that the following illegal relative connection still exists within your Pull Request: \n\n${{ steps.errors.outputs.content }}\n\nPlease fix these errors. Thank you again for your contribution.\n\nBegonia/Yuba"
