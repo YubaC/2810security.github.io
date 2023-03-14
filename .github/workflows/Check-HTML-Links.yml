@@ -51,11 +51,12 @@ jobs:
       - name: Echo bad links...
         run: echo "${{ steps.errors.outputs.content }}"
 
-      - if: steps.errors.outputs.content != ''
-        uses: JoseThen/comment-pr@v1.1.1
+      - if: steps.errors.outputs.content != '' 
+        name: Add comment
+        uses: peter-evans/create-or-update-comment@v1
         with:
-          comment: "Hello,world!"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          body: 'Thanks for opening this pull request!'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - if: steps.errors.outputs.content != ''
         run: |
