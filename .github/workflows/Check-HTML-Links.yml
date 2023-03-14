@@ -48,23 +48,22 @@ jobs:
         run: echo "${{ steps.errors.outputs.content }}"
 
       - if: steps.errors.outputs.content != '' && github.event_name == 'pull_request'
+        name: Install dependencies
+        run: |
+          npm install
+          npm run lint
+
+      - if: steps.errors.outputs.content != '' && github.event_name == 'pull_request'
         name: Comment on PR
-        uses: actions/github-script@v3
+        uses: actions/github-script@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const { data: pullRequest } = await github.pulls.get({
-              owner: github.context.repo.owner,
-              repo: github.context.repo.repo,
-              pull_number: github.context.payload.pull_request.number
-            });
-            const commentBody = '# HTML Links Test Report\n\nHi there!\n\nThank you for your Pull Request! However, we regret to inform you that the following illegal relative connection still exists within your Pull Request:\n\n' + steps.errors.outputs.content + '\n\nPlease fix these errors. Thank you again for your contribution.\n\nBegonia/Yuba';
-            await github.issues.createComment({
-              owner: github.context.repo.owner,
-              repo: github.context.repo.repo,
-              issue_number: pullRequest.number,
-              body: commentBody
-            });
+            const issueComment = context.issue({
+              body: '# HTML Links Test Report\n\nHi there!\n\nThank you for your Pull Request! However, we regret to inform you that the following illegal relative connection still exists within your Pull Request: \n\n${{ steps.errors.outputs.content }}\n\nPlease fix these errors. Thank you again for your contribution.\n\nBegonia/Yuba'
+            })
+            return github.issues.createComment(issueComment)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - if: steps.errors.outputs.content != ''
         run: |
