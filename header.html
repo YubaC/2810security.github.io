@@ -1,27 +1,76 @@
-<div class="d-flex flex-wrap justify-content-center">
-    <img id="title-img" class="w-100"
-        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/title.jpg">
-</div>
-<p class="text-center">团结紧张 严肃活泼</p>
-<hr>
+<!-- Nav for the larger screen -->
+<div class="d-none d-md-block">
+    <div class="d-flex flex-wrap justify-content-center">
+        <img id="title-img" class="w-100"
+            src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/title.jpg">
+    </div>
+    <p class="text-center">团结紧张 严肃活泼</p>
+    <hr>
 
-<nav role="navigation">
-    <ul id="header-nav" class="nav d-inline-flex flex-nowrap w-100 text-center">
-        <li class="nav-item flex-fill"><a href="https://yubac.github.io/2810security.github.io/index.htm">首页</a></li>
-        <li class="nav-item flex-fill"><a href="https://yubac.github.io/2810security.github.io/下属机构/下属机构.htm">下属机构</a>
-        </li>
-        <li class="nav-item flex-fill"><a href="https://yubac.github.io/2810security.github.io/法律规章/法律规章.htm">法律规章</a>
-            </td>
-        <li class="nav-item flex-fill"><a href="https://yubac.github.io/2810security.github.io/监督举报/监督举报.htm">监督举报</a>
-        </li>
-        <li class="nav-item flex-fill"><a href="https://yubac.github.io/2810security.github.io/审查巡察/审查巡察.htm">审查巡察</a>
-            </td>
-        <li class="nav-item flex-fill"><a href="https://yubac.github.io/2810security.github.io/服务大厅/服务大厅.htm">服务大厅</a>
-        </li>
-        <li class="nav-item flex-fill"><button id="assist-open" class="btn p-0 m-0 w-100 h-100">无障碍</button>
-        </li>
-    </ul>
-</nav>
+    <nav role="navigation">
+        <ul id="header-nav" class="nav d-inline-flex flex-nowrap w-100 text-center">
+            <li class="nav-item flex-fill"><a href="https://yubac.github.io/2810security.github.io/index.htm">首页</a>
+            </li>
+            <li class="nav-item flex-fill"><a
+                    href="https://yubac.github.io/2810security.github.io/下属机构/下属机构.htm">下属机构</a>
+            </li>
+            <li class="nav-item flex-fill"><a
+                    href="https://yubac.github.io/2810security.github.io/法律规章/法律规章.htm">法律规章</a>
+            <li class="nav-item flex-fill"><a
+                    href="https://yubac.github.io/2810security.github.io/监督举报/监督举报.htm">监督举报</a>
+            </li>
+            <li class="nav-item flex-fill"><a
+                    href="https://yubac.github.io/2810security.github.io/审查巡察/审查巡察.htm">审查巡察</a>
+            <li class="nav-item flex-fill"><a
+                    href="https://yubac.github.io/2810security.github.io/服务大厅/服务大厅.htm">服务大厅</a>
+            </li>
+            <li class="nav-item flex-fill"><button id="assist-open" class="btn p-0 m-0 w-100 h-100">无障碍</button>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Nav for the smaller screen -->
+<div class="d-md-none">
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid d-flex justify-content-between">
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler flex-grow-0 me-4 mt-1 mb-1" type="button" data-bs-toggle="collapse"
+                data-bs-target="#header-navbar-links">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Logo -->
+            <!-- <img src="./images/安全局徽章.png" alt="logo" class="navbar-brand m-auto" style="width:40px;"> -->
+        </div>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="header-navbar-links">
+            <img id="title-img" class="w-100"
+                src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/title2.jpg">
+            <ul class="navbar-nav ms-4 me-4 mt-3">
+                <li class="nav-item"><a class="nav-link"
+                        href="https://yubac.github.io/2810security.github.io/index.htm">首页</a>
+                </li>
+                <li class="nav-item"><a class="nav-link"
+                        href="https://yubac.github.io/2810security.github.io/下属机构/下属机构.htm">下属机构</a>
+                </li>
+                <li class="nav-item"><a class="nav-link"
+                        href="https://yubac.github.io/2810security.github.io/法律规章/法律规章.htm">法律规章</a>
+                <li class="nav-item flex-fill"><a class="nav-link"
+                        href="https://yubac.github.io/2810security.github.io/监督举报/监督举报.htm">监督举报</a>
+                </li>
+                <li class="nav-item"><a class="nav-link"
+                        href="https://yubac.github.io/2810security.github.io/审查巡察/审查巡察.htm">审查巡察</a>
+                <li class="nav-item"><a class="nav-link"
+                        href="https://yubac.github.io/2810security.github.io/服务大厅/服务大厅.htm">服务大厅</a>
+                </li>
+                <li class="nav-item"><button id="assist-open" class="btn nav-link p-0 m-0">无障碍</button></li>
+            </ul>
+        </div>
+    </nav>
+
+</div>
 
 <style>
     #title-img {
