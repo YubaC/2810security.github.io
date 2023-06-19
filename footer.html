@@ -1,0 +1,51 @@
+<div class="container small">
+    <div class="row">
+        <div class="col-sm-12 text-center text-white pt-4">
+            <button class="btn text-secondary btn-sm" onclick="document.documentElement.scrollTop=0">返回顶部</button>
+            <button class="btn text-secondary btn-sm" onclick=window.print()>打印本页</button>
+        </div>
+
+        <div class="col-sm-12 text-center text-white pt-4">
+            <span class="text-secondary">© 2023 济南舜耕中学二十八级十班安全局档案馆</span>
+        </div>
+
+        <div class="col-sm-12 text-center text-white">
+            <span class="text-secondary">Powered by Yuba Technology</span>
+        </div>
+
+        <div class="footer-links col-sm-12 text-center text-white pb-4">
+            <span class="text-secondary">友情链接：</span>
+            <span><a href="https://yubac.github.io/2810archive">济南舜耕中学二十八级十班安全局档案馆</a></span>
+            <span><a href="http://jnsgzx.jinan.cn/">济南舜耕中学</a></span>
+        </div>
+    </div>
+</div>
+
+<style>
+    #footer {
+        width: 100vw;
+        position: absolute;
+        left: 0;
+    }
+
+    #footer a {
+        color: var(--bs-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    #footer a:hover,
+    #footer a:focus {
+        text-decoration: underline;
+        color: var(--bs-white);
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        /* 如果屏幕宽度小于 600px，应用以下样式 */
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+</style>
