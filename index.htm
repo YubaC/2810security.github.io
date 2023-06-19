@@ -1,189 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <link rel="icon" href="https://yubac.github.io/2810security.github.io/images/icon.png" type="image/x-icon">
-    <meta http-equiv="Content-Language" content="zh-cn">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>28级10班安全局</title>
 
-    <!-- 网站排版 -->
-    <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-
-    <!--l2d调用-->
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
-    <style>
-        #github svg {
-            transition: all 1s;
-            fill: #222;
-            color: #fff;
-            position: absolute;
-            top: 0;
-            right: 0;
-            border: 0;
-            width: 80px;
-            height: 80px;
-        }
-        
-        #github:hover svg {
-            width: 160px;
-            height: 160px;
-        }
-    </style>
-
-    <!-- 鼠标指针 -->
-    <script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/mouse.js"></script>
-
+    <link rel="icon" href="https://yubac.github.io/2810security.github.io/images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/common.css">
+    <script src="./lib/jquery/js/jquery-3.6.3.min.js"></script>
+    <script src="./js/common.js"></script>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
 </head>
 
-<body>
-    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/assist-entry.js"></script>
+<body class="container-fluid">
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        .news {
+            width: 50%;
+            border-style: double;
+            border-width: 4px;
+        }
+
+        .news ul li {
+            margin: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .news {
+                width: 100%;
+            }
+        }
+
+        #canvas {
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            /* 在屏幕中的位子保持不变 */
+            position: fixed;
+            /* 使画布覆盖整个屏幕 */
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script type="text/javascript"
+        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/assist-entry.js"></script>
 
     <!-- 下雨特效 -->
     <canvas id="canvas"></canvas>
-    <img class="titleimage" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/title.jpg">
-    <!-- <img class="titleimage2" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/title2.jpg"> -->
-    <img class="titleimage2" src="images/title2.jpg">
 
-    <p class="titletext">团结紧张 严肃活泼</p>
+    <header id="header"></header>
 
-    <hr>
-
-    <header>
-        <nav>
-            <table>
-                <tr>
-                    <td><a href="index.htm">首页</a></td>
-                    <td><a href="下属机构/下属机构.htm">下属机构</a></td>
-                    <td><a href="法律规章/法律规章.htm">法律规章</a></td>
-                    <td><a href="监督举报/监督举报.htm">监督举报</a></td>
-                    <td><a href="审查巡察/审查巡察.htm">审查巡察</a></td>
-                    <td><a href="服务大厅/服务大厅.htm">服务大厅</a></td>
-                    <td id='assist-open'>无障碍</td>
-                </tr>
-            </table>
-        </nav>
-
-    </header>
-
-    <p>　</p>
-
-    <main>
-        <div class="news">
-            <div class="display_news">
-                <p class="title">
+    <main class="mt-4">
+        <div class="d-flex flex-wrap">
+            <section class="news">
+                <h1 class="h6 fw-bold p-0 m-3 text-center" role="heading">
                     <a href="近期事件/近期事件.htm">近期事件</a>
-                </p>
+                </h1>
                 <hr>
                 <ul>
                     <li><a href="近期事件/20230501劳动节/20230501劳动节.htm">庆祝劳动节</a></li>
                     <li><a href="http://www.news.cn/politics/2023lh/index.htm">专题：踏上新征程，奋楫再出发——2023年全国两会</a></li>
                     <li><a herf="http://www.news.cn/sports/2023-02/04/c_1129335921.htm">微视频｜冰雪之光</a></li>
-                    <li><a href="https://www.bilibili.com/video/BV1fP4y1v7eU/?spm_id_from=333.337.search-card.all.click&vd_source=6300d5097c42367fb9f71cd2d3106b4e">国家主席习近平发表二〇二三年新年贺词</a></li>
-                    <li><a href="https://news.cctv.com/2022/12/28/ARTISxK9w6NZwkM8386CHg7X221228.shtml">新一届中央政治局首次民主生活会，习近平强调这些要点</a></li>
+                    <li><a
+                            href="https://www.bilibili.com/video/BV1fP4y1v7eU/?spm_id_from=333.337.search-card.all.click&vd_source=6300d5097c42367fb9f71cd2d3106b4e">国家主席习近平发表二〇二三年新年贺词</a>
+                    </li>
+                    <li><a
+                            href="https://news.cctv.com/2022/12/28/ARTISxK9w6NZwkM8386CHg7X221228.shtml">新一届中央政治局首次民主生活会，习近平强调这些要点</a>
+                    </li>
                     <li><a href="近期事件/近期事件.htm">更多...</a></li>
                 </ul>
-            </div>
+            </section>
 
-            <div class="display_news">
-                <p class="title">安全提示</p>
+            <section class="news">
+                <h1 class="h6 fw-bold p-0 m-3 text-center" role="heading">
+                    安全提示
+                </h1>
                 <hr>
                 <ul>
                     <li><a href="https://mp.weixin.qq.com/s/eTackG37Fm8G5dgeTvhJyA">转需！5个新冠热点进阶科普</a></li>
-                    <li><a href="https://mp.weixin.qq.com/s/z7b0Q65xO5C68iTFUWrXSg">张伯礼院士解读疫情热点：中药西药可以一起吃吗？网上流传的抗疫中药方靠谱吗？……</a></li>
+                    <li><a
+                            href="https://mp.weixin.qq.com/s/z7b0Q65xO5C68iTFUWrXSg">张伯礼院士解读疫情热点：中药西药可以一起吃吗？网上流传的抗疫中药方靠谱吗？……</a>
+                    </li>
                     <li><a href="安全提示/2021071504转发重要天气预报.pdf">重要天气预报</a></li>
                 </ul>
-            </div>
-        </div>
-        <div class="news">
-            <div class="display_news">
-                <p class="title">
-                    <a href="校园环境/校园环境.html">校园环境</a></p>
-                <hr>
-                <div><img class="campus_img" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/夏.jpg"></div>
-            </div>
+            </section>
 
-            <div class="display_news">
-                <p class="title">
+            <section class="news">
+                <h1 class="h6 fw-bold p-0 m-3 text-center" role="heading">
+                    <a href="校园环境/校园环境.html">校园环境</a>
+                </h1>
+                <hr>
+                <div><img class="w-100"
+                        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/夏.jpg"></div>
+            </section>
+
+            <section class="news">
+                <h1 class="h6 fw-bold p-0 m-3 text-center" role="heading">
                     <a href="公示栏/公示栏.HTM">公示栏</a>
-                </p>
+                </h1>
                 <hr>
                 <ul>
-                    <li><a href="公示栏/20230604就夏季高考安全问题给有关班级成员的信/20230604就夏季高考安全问题给有关班级成员的信.html">就山东省2023年普通高等学校招生全国统一考试与普通高中学业水平等级考试安全问题给有关班级成员的信</a></li>
+                    <li><a
+                            href="公示栏/20230604就夏季高考安全问题给有关班级成员的信/20230604就夏季高考安全问题给有关班级成员的信.html">就山东省2023年普通高等学校招生全国统一考试与普通高中学业水平等级考试安全问题给有关班级成员的信</a>
+                    </li>
                     <li><a href="公示栏/20230404 2023年清明节放假通知/20230404 2023年清明节放假通知.html">2023年清明节放假通知</a></li>
                     <li><a href="公示栏/20230312网络技术分科2022年总结报告/网络技术分科2022年总结报告.html">网络技术分科2022年总结报告</a></li>
                     <li><a href="公示栏/20230115 2023年春节放假通知/20230115 2023年春节放假通知.html">2023年春节放假通知</a></li>
                     <li><a href="公示栏/20221230 2023年元旦放假通知/20221230 2023年元旦放假通知.html">2023年元旦放假通知</a></li>
                     <li><a href="公示栏/公示栏.HTM">更多...</a></li>
                 </ul>
+            </section>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-4 d-flex align-items-center">
+                <section>
+                    <h1 class="h6 fw-bold p-0 m-3 text-center" role="heading">
+                        ☆安全局概述
+                    </h1>
+                    <p>
+                        济南舜耕中学二十八级十班安全局是济南舜耕中学二十八级十班的班级安全机构与班级班规管理机构。有执勤员十余人和执勤犬一只。领导思想：为人民服务！安全问题人人有责！
+                    </p>
+                </section>
+            </div>
+
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <p class="text-center fw-bold">把培育与践行社会主义核心价值观活动<br>深入开展下去！</p>
+            </div>
+
+            <div class="col-md-4">
+                <img src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/价值观.jpg"
+                    class="w-100">
             </div>
         </div>
 
-        <p></p>
+        <section class="row mt-4">
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <p class="text-center fw-bold">科学防控疫情<br>坚决打赢疫情防控阻击战</p>
+            </div>
 
-        <div class="display_left">
-            <span class="fontsize_4">
-                <p class="title">
-                    ☆安全局概述
-                </p>
-                <p>
-                    济南舜耕中学二十八级十班安全局是济南舜耕中学二十八级十班的班级安全机构与班级班规管理机构。有执勤员十余人和执勤犬一只。领导思想：为人民服务！安全问题人人有责！
-                </p>
-            </span>
-        </div>
-
-        <div class="display_left">
-            <span class="fontsize_4">
-                <p class="title">把培育与践行社会主义核心价值观活动</p>
-                <p class="title">深入开展下去！</p>
-            </span>
-        </div>
-
-        <div class="display_left">
-            <span class="center">
-                <img src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/价值观.jpg" width="500"
-                    height="358">
-            </span>
-        </div>
-
-
-        <div class="display_right">
-            <span class="fontsize_6">
-                <p class="title">科学防控疫情</p>
-                <p class="title">坚决打赢疫情防控阻击战</p>
-            </span>
-        </div>
-
-        <div class="display_right">
-            <span class="center">
-                <img src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/抗击疫情海报.jpg" width="500"
-                    height="500">
-            </span>
-        </div>
+            <div class="col-md-4">
+                <img src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/抗击疫情海报.jpg"
+                    class="w-100">
+            </div>
+        </section>
 
     </main>
 
-    <footer>
+    <hr>
 
-        <div class="clear"></div>
-        <p>　</p>
-        <hr>
+    <footer id="footer" class="mt-4 bg-dark"></footer>
 
-        <div class="button">
-            <button type="button" onclick="document.documentElement.scrollTop=0">返回顶部</button>
-            <button type="button" onclick=window.print()>打印本页</button>
-        </div>
-
-        <div class="clear"></div>
-
-        <p>
-            常用外网链接：<a href="http://jnsgzx.jinan.cn/">济南舜耕中学</a>
-        </p>
-
-    </footer>
+    <!-- 鼠标指针 -->
+    <script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/mouse.js"></script>
 
     <!--l2d人物动画-->
     <div>
@@ -201,8 +176,10 @@
     </div>
 
     <!-- 用户分析统计 -->
-    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji0.js"></script>
-    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji1.js"></script>
+    <script type="text/javascript"
+        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji0.js"></script>
+    <script type="text/javascript"
+        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji1.js"></script>
 </body>
 
 </html>
