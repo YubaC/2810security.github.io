@@ -1,0 +1,34 @@
+body{
+    background-image: url("https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/desalination2.jpg");
+}
+
+hr{
+    opacity: 1 !important;
+}
+
+/* Header */
+
+
+
+/* Footer */
+
+#footer a {
+    color: var(--bs-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#footer a:hover,
+#footer a:focus {
+    text-decoration: underline;
+    color: var(--bs-white);
+}
+
+@media only screen and (max-width: 600px) {
+
+    /* 如果屏幕宽度小于 600px，应用以下样式 */
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+    }
+}
