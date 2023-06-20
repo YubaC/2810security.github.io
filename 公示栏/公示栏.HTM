@@ -2,130 +2,87 @@
 
 <head>
     <link rel="icon" href="https://yubac.github.io/2810security.github.io/images/icon.png" type="image/x-icon">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/common.css">
+    <script src="../lib/jquery/js/jquery-3.6.3.min.js"></script>
+    <script src="../js/common.js"></script>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+
     <title>公示栏</title>
     <!--l2d调用-->
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
-    <style>
-        #github svg {
-            transition: all 1s;
-            fill: #222;
-            color: #fff;
-            position: absolute;
-            top: 0;
-            right: 0;
-            border: 0;
-            width: 80px;
-            height: 80px;
-        }
-        
-        #github:hover svg {
-            width: 160px;
-            height: 160px;
-        }
-    </style>
 
     <!-- 用户分析统计 -->
-    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji0.js"></script>
-    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji1.js"></script>
+    <script type="text/javascript"
+        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji0.js"></script>
+    <script type="text/javascript"
+        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji1.js"></script>
     <!-- 鼠标指针 -->
     <script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/mouse.js"></script>
 
+    <style>
+        .list-item {
+            list-style-type: none;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
-<body background="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/desalination2.jpg">
-    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/assist-entry.js"></script>
-
+<body>
+    <script type="text/javascript"
+        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/assist-entry.js"></script>
 
     <!--l2d人物动画-->
     <div>
         <script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/autoload.js"></script>
     </div>
-    <table border="0" width="100%" id="table2">
-        <tr>
-            <td align="center" width="99%">
-                <img border="0" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/title.jpg" width="1000" height="200"></td>
-        </tr>
-        <tr>
-            <td align="center">
-                <font face="华文中宋">团结紧张 严肃活泼</font>
-            </td>
-        </tr>
-    </table>
-    <hr>
-    <table border="1" width="100%" id="table3">
-        <tr>
-            <td width="100" align="center"><a href="../index.htm">首页</a></td>
-            <td width="100" align="center"><a href="../下属机构/下属机构.htm">下属机构</a></td>
-            <td width="100" align="center"><a href="../法律规章/法律规章.htm">法律规章</a></td>
-            <td width="100" align="center"><a href="../监督举报/监督举报.htm">监督举报</a></td>
-            <td align="center" width="100"><a href="../审查巡察/审查巡察.htm">审查巡察</a></td>
-            <td align="center" width="100"><a href="../服务大厅/服务大厅.htm">服务大厅</a></td>
-            <td align="center" width="100" id='assist-open'>无障碍</td>
-        </tr>
-    </table>
 
-    <p align="center">
-        <font face="华文中宋" size="6">公示栏</font>
-    </p>
-    <p align="center"><a href="20230604就夏季高考安全问题给有关班级成员的信/20230604就夏季高考安全问题给有关班级成员的信.html">就山东省2023年普通高等学校招生<br>全国统一考试与普通高中学业水平<br>等级考试安全问题给有关班级成员的信</a>(20230606)</p>
-    <p align="center"><a href="20230312网络技术分科2022年总结报告/网络技术分科2022年总结报告.html">网络技术分科2022年总结报告</a>（20230312）</p>
-    <p align="center"><a href="20230115 2023年春节放假通知/20230115 2023年春节放假通知.html">2023年春节放假通知</a>（20230115）</p>
-    <p align="center"><a href="20221230 2023年元旦放假通知/20221230 2023年元旦放假通知.html">2023年元旦放假通知</a>（20231230）</p>
-    <p align="center">
-        <font face="宋体">
-            <a href="20221214开放留言区通知/20221214开放留言区通知.html">留言区开放通知</a>（20221214）</font>
-    </p>
-    <p align="center">
-        <font face="宋体">
-            <a href="20220720关于设立服务勋章的通知/20220720关于设立服务勋章的通知.html">关于设立服务勋章的通知</a>（20220720）</font>
-    </p>
-    <p align="center">
-        <font face="宋体">
-            <a href="20220615人民万岁/20220615人民万岁.html">人民万岁！</a>（20220615）</font>
-    </p>
-    <p align="center">
-        <font face="宋体">
-            <a href="20220510校园风景.html">校园风景</a>（20220510）</font>
-    </p>
-    <p align="center">
-        <font face="宋体">
-            <a href="20220131放假通知/20220131放假通知.html">放假通知</a>（20220131）</font>
-    </p>
-    <p align="center">
-        <font face="宋体">
-            <a href="20210820关于全面推广二代执勤证的公告.htm">关于全面推广二代执勤证的公告</a>（20210820）</font>
-    </p>
-    <p align="center">
-        <font face="宋体">
-            <a href="20210803关于对王一凡的寻找结果公示/20210803关于对王一凡的寻找结果公示.html">关于对王一凡的寻找结果公示</a>（20210803）</font>
-    </p>
-    <p align="center">
-        <font face="宋体">
-            <a href="20210803 2021年第一季度实验室试剂购买公示表/20210803 2021年第一季度实验室试剂购买公示表.html">2021年第一季度实验室试剂购买公示表</a>（20210803）</font>
-    </p>
-    <p align="center">
-        <font face="宋体">
-            <a href="20210626对网络技术员的通知.htm">对网络技术员的通知</a>（20210626）</font>
-    </p>
-    <p align="center"><a href="关于全网站进行CDN加速的通告/关于全网站进行CDN加速的通告.HTM">关于全网站进行CDN加速的通告.HTM</a>（20210307）</p>
-    <p align="center">
-        <font face="宋体">
-            <a href="20210203放假通知/20210203放假通知.htm">放假通知</a>（20210203）</font>
-    </p>
-    <!-- <p align="center"><a href="20201031班委会迁出公告.HTM">关于班委会迁出的公告</a>（20210131）</p> -->
-    <p align="center"><a href="../近期事件/人员流动/人员流动.htm">联合发文！人员流动名单在此</a>（20200818）</p>
-    <p align="center"><a href="移动布告.htm">关于监察委员会、班级委员会、班级委员会纪律检查委员会移动的布告</a>（20200810）</p>
-    <p align="center">
-        <font face="宋体"><a href="聚餐报备20200727/聚餐报备20200727.htm">聚餐报备</a>（20200727</font>）</p>
-    <p align="center"><a href="安全局官网今天成立.HTM">安全局官网今天成立</a>（20200726）</p>
-    <p align="center">　</p>
-    <hr>
-    <p align="left">
-        <font face="宋体">常用外网链接：<a href="http://jnsgzx.jinan.cn/">济南舜耕中学</a></font>
-    </p>
+    <header id="header"></header>
 
+    <main class="container-fluid text-center mt-4">
+        <h1 class="title fw-bold p-0 m-3 text-center">公示栏</h1>
+
+        <ul class="text-center">
+            <li class="list-item"><a
+                    href="20230604就夏季高考安全问题给有关班级成员的信/20230604就夏季高考安全问题给有关班级成员的信.html">就山东省2023年普通高等学校招生<br>全国统一考试与普通高中学业水平<br>等级考试安全问题给有关班级成员的信</a>(20230606)
+            </li>
+            <li class="list-item"><a href="20230312网络技术分科2022年总结报告/网络技术分科2022年总结报告.html">网络技术分科2022年总结报告</a>（20230312）
+            </li>
+            <li class="list-item"><a href="20230115 2023年春节放假通知/20230115 2023年春节放假通知.html">2023年春节放假通知</a>（20230115）
+            </li>
+            <li class="list-item"><a href="20221230 2023年元旦放假通知/20221230 2023年元旦放假通知.html">2023年元旦放假通知</a>（20231230）
+            </li>
+            <li class="list-item"><a href="20221214开放留言区通知/20221214开放留言区通知.html">留言区开放通知</a>（20221214）</li>
+            <li class="list-item"><a href="20220720关于设立服务勋章的通知/20220720关于设立服务勋章的通知.html">关于设立服务勋章的通知</a>（20220720）</li>
+            <li class="list-item"><a href="20220615人民万岁/20220615人民万岁.html">人民万岁！</a>（20220615）</li>
+            <li class="list-item"><a href="20220510校园风景.html">校园风景</a>（20220510）</li>
+            <li class="list-item"><a href="20220131放假通知/20220131放假通知.html">放假通知</a>（20220131）</li>
+            <li class="list-item"><a href="20210820关于全面推广二代执勤证的公告.htm">关于全面推广二代执勤证的公告</a>（20210820）</li>
+            <li class="list-item"><a href="20210803关于对王一凡的寻找结果公示/20210803关于对王一凡的寻找结果公示.html">关于对王一凡的寻找结果公示</a>（20210803）
+            </li>
+            <li class="list-item"><a
+                    href="20210803 2021年第一季度实验室试剂购买公示表/20210803 2021年第一季度实验室试剂购买公示表.html">2021年第一季度实验室试剂购买公示表</a>（20210803）
+            </li>
+            <li class="list-item"><a href="20210626对网络技术员的通知.htm">对网络技术员的通知</a>（20210626）</li>
+            <li class="list-item"><a href="关于全网站进行CDN加速的通告/关于全网站进行CDN加速的通告.HTM">关于全网站进行CDN加速的通告.HTM</a>（20210307）</li>
+            <li class="list-item"><a href="20210203放假通知/20210203放假通知.htm">放假通知</a>（20210203）</li>
+            <!-- <li class="list-item"><a href="20201031班委会迁出公告.HTM">关于班委会迁出的公告</a>（20210131）</li> -->
+            <li class="list-item"><a href="../近期事件/人员流动/人员流动.htm">联合发文！人员流动名单在此</a>（20200818）</li>
+            <li class="list-item"><a href="移动布告.htm">关于监察委员会、班级委员会、班级委员会纪律检查委员会移动的布告</a>（20200810）</li>
+            <li class="list-item"><a href="聚餐报备20200727/聚餐报备20200727.htm">聚餐报备</a>（20200727）</li>
+            <li class="list-item"><a href="安全局官网今天成立.HTM">安全局官网今天成立</a>（20200726）</li>
+        </ul>
+    </main>
+
+    <hr>
+
+    <footer id="footer" class="mt-4 bg-dark"></footer>
 </body>
 
 </html>
