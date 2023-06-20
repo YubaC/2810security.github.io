@@ -46,30 +46,38 @@
     <header id="header"></header>
 
     <main class="container-fluid mt-4">
-        <p align="center">
-            <font size="6" face="华文中宋">证件办理-值勤许可证</font>
-        </p>
-        <p>
-            济南舜耕中学二十八级十班安全局执勤许可证<br>值勤许可证是安全局成员在执勤时应随身携带，以证明身份的证件。如有丢失，应及时补办。<br>办理期间请使用<a
-                href='证件办理-临时证.html'>临时执勤许可证</a>。
-        </p>
-        <p>
-            执勤许可证有横版和竖版之分。<br>两种许可证功能相同，除版式外没有任何区别。
-        </p>
-        <p>
-            注：打印完成后不得对证件进行涂改。否则证件无效。
-        </p>
-        <form>
-            请输入编号:<br>
-            <input type="text" name="name" id="number">
-            <br> 请输入性名:<br>
-            <input type="text" name="sex" id="name">
-            <br> 请输入性别:<br>
-            <input type="text" name="number" id="sex">
-            <br><br>
-        </form>
-        <button id='exportBtn-heng'>生成执勤许可证(横版)</button>
-        <button id='exportBtn-shu'>生成执勤许可证(竖版)</button>
+        <div class="container">
+            <p align="center">
+                <font size="6" face="华文中宋">证件办理-值勤许可证</font>
+            </p>
+            <p>
+                济南舜耕中学二十八级十班安全局执勤许可证<br>值勤许可证是安全局成员在执勤时应随身携带，以证明身份的证件。如有丢失，应及时补办。<br>办理期间请使用<a
+                    href='证件办理-临时证.html'>临时执勤许可证</a>。
+            </p>
+            <p>
+                执勤许可证有横版和竖版之分。<br>两种许可证功能相同，除版式外没有任何区别。
+            </p>
+            <p>
+                注：打印完成后不得对证件进行涂改。否则证件无效。
+            </p>
+            <form action="" id="user-input" class="needs-validation" novalidate>
+                <div class="mb-3 mt-3">
+                    <label for="number" class="form-label">请输入编号:</label>
+                    <input type="text" class="form-control" id="number" placeholder="请输入编号" name="number" required>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="name" class="form-label">请输入性名:</label>
+                    <input type="text" class="form-control" id="name" placeholder="请输入性名" name="name" required>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="sex" class="form-label">请输入性别:</label>
+                    <input type="text" class="form-control" id="sex" placeholder="请输入性别" name="sex" required>
+                </div>
+            </form>
+
+            <button id='exportBtn-heng' class="btn btn-primary mt-2">生成执勤许可证(横版)</button>
+            <button id='exportBtn-shu' class="btn btn-primary mt-2">生成执勤许可证(竖版)</button>
+        </div>
     </main>
 
     <hr>
@@ -77,7 +85,6 @@
     <footer id="footer" class="mt-4 bg-dark"></footer>
 </body>
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/KeeeX/qrcodejs/qrcode.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.umd.js"></script>
 <script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/fzxiysjw.js"></script>
 <script>
@@ -86,7 +93,7 @@
     const myyear = datetoday.getFullYear();
 
     const hengData = {
-        pdfName: "执勤许可证(横版).pdf",
+        pdfNmae: "执勤许可证(横版).pdf",
         bgImg: 'https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/服务大厅/证件办理/images/formwork.jpg',
         text: [
             { fontSize: 10 },
@@ -193,6 +200,13 @@
         ]
     }
 
+    // 检查输入
+    function checkForm() {
+        $('#user-input').addClass('was-validated');
+        return $('#user-input')[0].checkValidity();
+    };
+
+
     function buildPdf(data) {
         const doc = new jspdf.jsPDF('a4', 'mm');
         doc.addFont('fzxiysjw.ttf', 'fzxiysjw', 'normal');
@@ -212,10 +226,20 @@
     }
 
     $('#exportBtn-heng').click(function () {
+        if (!checkForm()) {
+            window.alert('请输入完整的个人信息！');
+            return;
+        }
+
         buildPdf(hengData);
     })
 
     $('#exportBtn-shu').click(function () {
+        if (!checkForm()) {
+            window.alert('请输入完整的个人信息！');
+            return;
+        }
+
         buildPdf(shuData);
     })
 </script>
