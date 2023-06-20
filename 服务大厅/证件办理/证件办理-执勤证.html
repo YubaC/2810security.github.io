@@ -87,7 +87,7 @@
 
     const hengData = {
         pdfName: "执勤许可证(横版).pdf",
-        img: 'https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/服务大厅/证件办理/images/formwork.jpg',
+        bgImg: 'https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/服务大厅/证件办理/images/formwork.jpg',
         text: [
             { fontSize: 10 },
             {
@@ -141,7 +141,7 @@
 
     const shuData = {
         pdfNmae: "执勤许可证(竖版).pdf",
-        img: 'https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/服务大厅/证件办理/images/formwork2.jpg',
+        bgImg: 'https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/服务大厅/证件办理/images/formwork2.jpg',
         text: [
             { fontSize: 10 },
             {
@@ -199,7 +199,7 @@
         doc.setFont('fzxiysjw');
         doc.setFontSize(16);
 
-        doc.addImage(data.img, 'JPEG', 30.75, 30.75, 148.5, 210);
+        doc.addImage(data.bgImg, 'JPEG', 30.75, 30.75, 148.5, 210);
         for (let i = 0; i < data.text.length; i++) {
             const item = data.text[i];
             if (item.fontSize) {
