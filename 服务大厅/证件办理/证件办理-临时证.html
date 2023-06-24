@@ -1,84 +1,99 @@
-<html>
+<html lang="zh-CN">
 
 <head>
     <link rel="icon" href="https://yubac.github.io/2810security.github.io/images/icon.png" type="image/x-icon">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/common.css">
+    <script src="../../lib/jquery/js/jquery-3.6.3.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+
     <title>证件办理-临时证</title>
+    <!--l2d调用-->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 
     <!-- 用户分析统计 -->
-    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji0.js"></script>
-    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.umd.js"></script>
-    <script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/fzxiysjw.js"></script>
+    <script type="text/javascript"
+        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji0.js"></script>
+    <script type="text/javascript"
+        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji1.js"></script>
     <!-- 鼠标指针 -->
     <script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/mouse.js"></script>
-
 </head>
 
-<body background="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/desalination2.jpg">
-    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/assist-entry.js"></script>
+<body>
+    <script type="text/javascript"
+        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/assist-entry.js"></script>
 
+    <!--l2d人物动画-->
+    <div>
+        <script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/autoload.js"></script>
+    </div>
 
-    <table border="0" width="100%" id="table2">
-        <tr>
-            <td align="center">
+    <header id="header"></header>
 
-                <p>　</p>
-                <table border="0" width="100%" id="table5">
-                    <tr>
-                        <td align="center" width="96%">
-                            <img border="0" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/title.jpg" width="1000" height="200"></td>
-                    </tr>
-                </table>
-                <font face="华文中宋">团结紧张 严肃活泼</font>
-            </td>
-        </tr>
-    </table>
+    <main class="container-fluid mt-4">
+        <div class="container">
+            <h1 class="title text-center mb-4">证件办理-临时证</h1>
+            <h2 class="h6 fw-bold">济南舜耕中学二十八级十班安全局临时执勤许可证(A4版)</h2>
+            <p>根据有关规定，当执勤证件出现丢失、损坏、过期等无法使用的情况，但需要使用执勤证件时，持证人有权向有关部门申请签发临时执勤许可证。有关部门应及时处理。
+            </p>
+            <p>
+                注：打印完成后不得对证件进行涂改。否则证件无效。
+            </p>
+            <form action="" id="user-input" class="needs-validation" novalidate>
+                <div class="mb-3 mt-3">
+                    <label for="name" class="form-label">请输入姓名:</label>
+                    <input type="text" class="form-control" id="name" placeholder="请输入姓名" name="name" required>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="sex" class="form-label">请输入性别:</label>
+                    <input type="text" class="form-control" id="sex" placeholder="请输入性别" name="sex" required>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="number" class="form-label">请输入原证件号码:</label>
+                    <input type="text" class="form-control" id="number" placeholder="请输入原证件号码" name="number" required>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="number" class="form-label">请输入职务:</label>
+                    <input type="text" class="form-control" id="officer" placeholder="请输入职务" name="number" required>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="number" class="form-label">请输入申请日期:</label>
+                    <input type="text" class="form-control" id="date" placeholder="请输入申请日期" name="number" required>
+                </div>
+            </form>
+            <button id='exportBtn' class="btn btn-primary">生成临时执勤许可证</button>
+        </div>
+
+    </main>
+
     <hr>
-    <table border="1" width="100%" id="table3">
-        <tr>
-            <td width="100" align="center"><a href="../../index.htm">首页</a></td>
-            <td width="100" align="center"><a href="../../下属机构/下属机构.htm">下属机构</a></td>
-            <td width="100" align="center"><a href="../../法律规章/法律规章.htm">班纪校规</a></td>
-            <td width="100" align="center"><a href="../../监督举报/监督举报.htm">监督举报</a></td>
-            <td align="center" width="100"><a href="../../审查巡察/审查巡察.htm">审查巡察</a></td>
-            <td align="center" width="100"><a href="../../服务大厅/服务大厅.htm">服务大厅</a></td>
-            <td align="center" width="100" id='assist-open'>无障碍</td>
-        </tr>
-    </table>
-    <p align="center">
-        <font size="6" face="华文中宋">证件办理-临时证</font>
-    </p>
-    <p>
-        济南舜耕中学二十八级十班安全局临时执勤许可证(A4版)<br>根据有关规定，当执勤证件出现丢失、损坏、过期等无法使用的情况，但需要使用 执勤证件时，持证人有权向有关部门申请签发临时执勤许可证。<br>有关部门应及时处理。
-    </p>
-    <p>
-        注：打印完成后不得对证件进行涂改。否则证件无效。
-    </p>
-    <p <form action="/demo/demo_form.asp">
-        请输入姓名:<br>
-        <input type="text" name="name" id="name">
-        <br> 请输入性别:<br>
-        <input type="text" name="sex" id="sex">
-        <br> 请输入原证件号码:<br>
-        <input type="text" name="number" id="number">
-        <br> 请输入职务:<br>
-        <input type="text" name="officer" id="officer">
-        <br> 请输入申请日期:<br>
-        <input type="text" name="date" id="date">
-        <br><br>
-        </form>
-        <button id='exportBtn'>生成临时执勤许可证</button>
 
-        <hr>
-        <p align="left">
-            <font face="宋体">常用外网链接：<a href="http://jnsgzx.jinan.cn/">济南舜耕中学</a></font>
-        </p>
-
+    <footer id="footer" class="mt-4 bg-dark"></footer>
 </body>
-<script>
-    exportBtn.onclick = function() {
 
+<script src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.umd.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/fzxiysjw.js"></script>
+<script>
+    // 检查输入
+    function checkForm() {
+        $('#user-input').addClass('was-validated');
+        return $('#user-input')[0].checkValidity();
+    };
+
+    exportBtn.onclick = function () {
+        if (!checkForm()) {
+            window.alert('请输入完整的个人信息！');
+            return;
+        }
+
+        $('#exportBtn').html(`<div class="spinner-border spinner-border-sm me-2" aria-hidden="true"></div>正在生成生成临时执勤许可证...`).attr('disabled', true);
 
         // v1
         // var doc = new jsPDF();
@@ -150,6 +165,11 @@
 
 
         doc.save('临时执勤许可证(A4版).pdf');
+
+        $('#exportBtn').html('生成完毕！');
+        setTimeout(function () {
+            $('#exportBtn').html('生成临时执勤许可证').attr('disabled', false);
+        }, 1500);
 
     }
 </script>

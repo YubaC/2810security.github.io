@@ -1,136 +1,191 @@
-<html>
+<html lang="zh-CN">
 
 <head>
     <link rel="icon" href="https://yubac.github.io/2810security.github.io/images/icon.png" type="image/x-icon">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>证件办理-执勤证-2代</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/common.css">
+    <script src="../../lib/jquery/js/jquery-3.6.3.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+
+    <title>证件办理-执勤证</title>
+    <!--l2d调用-->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 
     <!-- 用户分析统计 -->
-    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji0.js"></script>
-    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.umd.js"></script>
-    <script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/fzxiysjw.js"></script>
+    <script type="text/javascript"
+        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji0.js"></script>
+    <script type="text/javascript"
+        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/tongji1.js"></script>
     <!-- 鼠标指针 -->
     <script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/mouse.js"></script>
-
 </head>
 
-<body background="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/desalination2.jpg">
-    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/assist-entry.js"></script>
+<body>
+    <script type="text/javascript"
+        src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/assist-entry.js"></script>
 
+    <!--l2d人物动画-->
+    <div>
+        <script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/autoload.js"></script>
+    </div>
 
-    <table border="0" width="100%" id="table2">
-        <tr>
-            <td align="center">
+    <header id="header"></header>
 
-                <p>　</p>
-                <table border="0" width="100%" id="table5">
-                    <tr>
-                        <td align="center" width="96%">
-                            <img border="0" src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/images/title.jpg" width="1000" height="200">
-                        </td>
-                    </tr>
-                </table>
-                <font face="华文中宋">团结紧张 严肃活泼</font>
-            </td>
-        </tr>
-    </table>
-    <hr>
-    <table border="1" width="100%" id="table3">
-        <tr>
-            <td width="100" align="center"><a href="../../index.htm">首页</a></td>
-            <td width="100" align="center"><a href="../../下属机构/下属机构.htm">下属机构</a></td>
-            <td width="100" align="center"><a href="../../法律规章/法律规章.htm">班纪校规</a></td>
-            <td width="100" align="center"><a href="../../监督举报/监督举报.htm">监督举报</a></td>
-            <td align="center" width="100"><a href="../../审查巡察/审查巡察.htm">审查巡察</a></td>
-            <td align="center" width="100"><a href="../../服务大厅/服务大厅.htm">服务大厅</a></td>
-            <td align="center" width="100" id='assist-open'>无障碍</td>
-        </tr>
-    </table>
-    <p align="center">
-        <font size="6" face="华文中宋">证件办理-值勤许可证-2代</font>
-    </p>
-    <p>
-        济南舜耕中学二十八级十班安全局执勤许可证<br>值勤许可证是安全局成员在执勤时应随身携带，以证明身份的证件。如有丢失，应及时补办。<br>办理期间请使用<a href='证件办理-临时证.html'>临时执勤许可证</a>。
-    </p>
-    <p>
-        执勤许可证有横版和竖版之分。<br>两种许可证功能相同，除版式外没有任何区别。
-    </p>
-    <p>
-        注：打印完成后不得对证件进行涂改。否则证件无效。
-    </p>
-    <p <form action="/demo/demo_form.asp">
-        请输入编号:<br>
-        <input type="text" name="name" id="number" onchange="hide()">
-        <br> 请输入性名:<br>
-        <input type="text" name="sex" id="name" onchange="hide()">
-        <br> 请输入性别:<br>
-        <input type="text" name="number" id="sex" onchange="hide()">
-        <br><br>
-        </form>
-        <button id='exportBtn'>生成执勤许可证</button>
-        <br>
-        <button id='download_heng' style="display:none">下载执勤许可证(横版)</button>
-        <button id='download_shu' style="display:none">下载执勤许可证(竖版)</button>
-        <p id='QRp' style="display:none">
-            您的证件二维码:
-        </p>
-        <div id="qrcode" style="width:100px; height:100px; margin-top:15px; ">
+    <main class="container-fluid mt-4">
+        <div class="container">
+            <h1 class="title text-center mb-4">证件办理-值勤许可证-2代</h1>
+            <h2 class="h6 fw-bold">济南舜耕中学二十八级十班安全局执勤许可证-第二代</h2>
+            <p>值勤许可证是安全局成员在执勤时应随身携带以证明身份的证件。如有丢失，应及时补办。
+                <br><a href='证件办理-临时证.html'>办理期间请使用临时执勤许可证。</a>
+            </p>
+            <p>
+                执勤许可证有横版和竖版之分。<br>两种许可证功能相同，除版式外没有任何区别。
+            </p>
+            <p>
+                注：打印完成后不得对证件进行涂改。否则证件无效。
+            </p>
+
+            <form action="" id="user-input" class="needs-validation" novalidate>
+                <div class="mb-3 mt-3">
+                    <label for="number" class="form-label">请输入编号:</label>
+                    <input type="text" class="form-control" id="number" placeholder="请输入编号" name="number" required>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="name" class="form-label">请输入姓名:</label>
+                    <input type="text" class="form-control" id="name" placeholder="请输入姓名" name="name" required>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="sex" class="form-label">请输入性别:</label>
+                    <input type="text" class="form-control" id="sex" placeholder="请输入性别" name="sex" required>
+                </div>
+            </form>
+
+            <button id='exportBtn-heng' class="btn btn-primary mt-2">生成执勤许可证(横版)</button>
+            <button id='exportBtn-shu' class="btn btn-primary mt-2">生成执勤许可证(竖版)</button>
         </div>
+    </main>
 
-        <canvas id="myCanvas" width="163" height="244"></canvas>
+    <hr>
 
-        <hr>
-        <p align="left">
-            <font face="宋体">常用外网链接：<a href="http://jnsgzx.jinan.cn/">济南舜耕中学</a></font>
-        </p>
-
+    <footer id="footer" class="mt-4 bg-dark"></footer>
 </body>
+
+</html>
+
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/KeeeX/qrcodejs/qrcode.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.1/jspdf.debug.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.umd.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/js/fzxiysjw.js"></script>
 <script>
-    qrcode = new QRCode(document.getElementById("qrcode"), {
-        width: 200,
-        height: 200
-    });
-    reloadinfo();
+    const data = {
+        content: [
+            { fontsize: 16 },
+            {
+                x: 103.4 + 30.75,
+                y: 159.2 + 30.75 + 4.5 - 24 + 10 * 0,
+                text: "number",
+                get text() {
+                    return $("#number").val();
+                }
+            },
+            {
+                x: 103.4 + 30.75,
+                y: 159.2 + 30.75 + 4.5 - 24 + 10 * 1,
+                text: "name",
+                get text() {
+                    return $("#name").val();
+                }
+            },
+            {
+                x: 103.4 + 30.75,
+                y: 159.2 + 30.75 + 4.5 - 24 + 10 * 2,
+                text: "sex",
+                get text() {
+                    return $("#sex").val();
+                }
+            },
+            {
+                x: 103.4 + 30.75,
+                y: 159.2 + 30.75 + 4.5 - 24 + 10 * 3,
+                text: "安全局人事处"
+            },
+            { fontsize: 10 },
+            {
+                x: 103.4 + 30.75,
+                y: 159.2 + 30.75 + 4 - 24 + 10 * 4,
+                text: "date",
+                get text() {
+                    const datetoday = new Date();
+                    const timenow = datetoday.getTime();
+                    datetoday.setTime(timenow);
+                    const myyear = datetoday.getYear() + 1900;
+                    return myyear + " .1.1- " + myyear + ".12.31 ";
+                }
+            },
+            {
+                x: 25.75,
+                y: 245.75,
+                text: "这是横版的值勤许可证。"
+            },
+            {
+                x: 25.75,
+                y: 250.75,
+                text: "打印完成后请将值勤许可证按外边框裁下，"
+            },
+            {
+                x: 25.75,
+                y: 255.75,
+                text: "然后将二维码折向背面，"
+            },
+            {
+                x: 25.75,
+                y: 260.75,
+                text: "最后将裁下的值勤许可证上下对折，再左右对折，"
+            },
+            {
+                x: 25.75,
+                y: 265.75,
+                text: "即可获得值勤许可证(横版)。"
+            },
+            {
+                x: 25.75,
+                y: 270.75,
+                text: "折叠完成后，"
+            },
+            {
+                x: 25.75,
+                y: 275.75,
+                text: "二维码应位于证件外侧和内侧的夹层中。"
+            },
+            {
+                img: "QRCode",
+                x: 105.4 + 6,
+                y: 212 + 10,
+                width: 60.25,
+                height: 60.25,
+                get img() {
+                    return generateQRCode({
+                        name: $("#name").val(),
+                        sex: $("#sex").val(),
+                        number: $("#number").val(),
+                        year: new Date().getFullYear()
+                    });
+                }
+            }
+        ]
+    };
 
-    function reloadinfo() {
-        name = document.getElementById("name").value;
-        sex = document.getElementById("sex").value;
-        number = document.getElementById("number").value;
-        name = name.toString();
-        sex = sex.toString();
-        number = number.toString();
-
-        datetoday = new Date();
-        timenow = datetoday.getTime();
-        datetoday.setTime(timenow);
-        myyear = datetoday.getYear() + 1900;
-
-        date = myyear + ' .1.1- ' + myyear + '.12.31 '
-        date = date.toString();
-
-        name2 = encodeURI(encodeURI(name));
-        sex2 = encodeURI(encodeURI(sex));
-    }
-
-    function hide() {
-        document.getElementById('download_heng').style.display = 'none'
-        document.getElementById('download_shu').style.display = 'none'
-        document.getElementById('QRp').style.display = 'none'
-    }
-
-    function show() {
-        document.getElementById('download_heng').style.display = 'block'
-        document.getElementById('download_shu').style.display = 'block'
-        document.getElementById('QRp').style.display = 'block'
-    }
-
-    var I64BIT_TABLE =
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-'.split('');
+    const hengBgImg = "https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/服务大厅/证件办理/images/formwork3.jpg",
+        shuBgImg = "https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/服务大厅/证件办理/images/formwork4.jpg";
 
     function hash(input) {
+        var I64BIT_TABLE =
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-'.split('');
         var hash = 5381;
         var i = input.length - 1;
         if (typeof input == 'string') {
@@ -149,98 +204,87 @@
         return retValue;
     }
 
-    function buildpdf(img) {
+    async function generateQRCode(info) {
+        const qrCodeDiv = document.createElement("div");
+        const qrCode = new QRCode(qrCodeDiv, {
+            text: `https://yubac.github.io/2810security.github.io/SecurityServices/verify.html?name=${info.name}&sex=${info.sex}&number=${info.number}&activelife=${info.year}&sign=${hash(info.number + info.name + info.sex + info.year)}`,
+            width: 200,
+            height: 200
+        });
 
-        //var doc = new jspdf.jsPDF('a4 ', 'mm ');
-        doc = new jspdf.jsPDF('a4', 'mm');
-        //doc = new jsPDF('a4 ', 'mm ');
-        doc.addFont('fzxiysjw.ttf', 'fzxiysjw', 'normal');
-        doc.setFont('fzxiysjw');
-        doc.setFontSize(16);
-        //doc.addImage("examples/images/Octonyan.jpg", "JPEG", 15, 40, 180, 180);
-
-        doc.addImage(img, 'JPEG', 30.75, 6.75, 148.5, 284.25);
-        doc.text(103.4 + 30.75, 159.2 + 30.75 + 4.5 - 24 + 10 * 0, number);
-        doc.text(103.4 + 30.75, 159.2 + 30.75 + 4.5 - 24 + 10 * 1, name);
-        doc.text(103.4 + 30.75, 159.2 + 30.75 + 4.5 - 24 + 10 * 2, sex);
-        doc.text(103.4 + 30.75, 159.2 + 30.75 + 4.5 - 24 + 10 * 3, '安全局人事处');
-        doc.setFontSize(10);
-        doc.text(103.4 + 30.75, 159.2 + 30.75 + 4 - 24 + 10 * 4, date);
-
-
+        return new Promise((resolve, reject) => {
+            $(qrCodeDiv).find('img').on('load', () => {
+                resolve(qrCodeDiv.lastChild);
+            }).on('error', () => {
+                reject(new Error('QR code generation failed'));
+            });
+        });
     }
 
-    function QRonload(inputtext) {
 
-        qrcode.makeCode(inputtext);
-
+    async function buildPDF(data) {
+        const doc = new jspdf.jsPDF("a4", "mm");
+        doc.addFont("fzxiysjw.ttf", "fzxiysjw", "normal");
+        doc.setFont("fzxiysjw");
+        // Add background image
+        doc.addImage(data.bgImg, "JPEG", 30.75, 6.75, 148.5, 284.25);
+        for (let i = 0; i < data.content.length; i++) {
+            const item = data.content[i];
+            if (item.fontsize) {
+                doc.setFontSize(item.fontsize);
+            } else if (item.text) {
+                doc.text(item.text, item.x, item.y);
+            } else if (item.img) {
+                const img = item.img instanceof Promise ? await item.img : item.img;
+                doc.addImage(img, "PNG", item.x, item.y, item.width, item.height);
+            }
+        }
+        doc.save(data.pdfName);
     }
 
-    function makeCode() {
-        qrimg = document.getElementById('qrcode').lastChild;
-        console.log(qrimg);
-        canvas = document.createElement('CANVAS');
-        canvas.width = 200
-        canvas.height = 200
+    // 检查输入
+    function checkForm() {
+        $('#user-input').addClass('was-validated');
+        return $('#user-input')[0].checkValidity();
+    };
 
-        cxt = canvas.getContext('2d');
+    $('#exportBtn-heng').click(function () {
+        if (!checkForm()) {
+            window.alert('请输入完整的个人信息！');
+            return;
+        }
 
-        cxt.drawImage(qrimg, 0, 0, 200, 200);
-        cxt.font = '20px Arial';
-        cxt.fillStyle = "black";
+        data.bgImg = hengBgImg;
+        data.pdfName = '执勤许可证(横版).pdf';
 
-        dataURL = canvas.toDataURL('image/png', 1.0);
-        canvas = null;
-    }
+        $('#exportBtn-heng').html(`<div class="spinner-border spinner-border-sm me-2" aria-hidden="true"></div>正在生成执勤许可证(横版)...`).attr('disabled', true);
+        setTimeout(async function () {
+            await buildPDF(data);
+            $('#exportBtn-heng').html('生成完毕！');
+            setTimeout(function () {
+                $('#exportBtn-heng').html('生成执勤许可证(横版)').attr('disabled', false);
+            }, 1500);
+        }, 100);
+    });
 
-    exportBtn.onclick = function() {
-        reloadinfo();
-        QRtext = "https://yubac.github.io/2810security.github.io/SecurityServices/verify.html?" + 'name=' + name2 + '&sex=' + sex2 + '&number=' + number + '&activelife=' + myyear + '&sign=' + hash(number + name2 + sex2 + myyear);
-        QRonload(QRtext);
-        //window.alert(number + name2 + sex2 + myyear);
+    $('#exportBtn-shu').click(function () {
+        if (!checkForm()) {
+            window.alert('请输入完整的个人信息！');
+            return;
+        }
 
-        show();
-    }
+        data.bgImg = shuBgImg;
+        data.pdfName = '执勤许可证(竖版).pdf';
 
-    download_heng.onclick = function() {
-
-        //var imgData = ' ';
-        buildpdf('https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/服务大厅/证件办理/images/formwork3.jpg');
-        //buildpdf('formwork.jpg');
-
-        QRonload(QRtext);
-        makeCode();
-        doc.addImage(dataURL, 'PNG', 105.4 + 6, 212 + 10, 60.25, 60.25);
-        doc.text(25.75, 245.75, '这是横版的值勤许可证。');
-        doc.text(25.75, 250.75, '打印完成后请将值勤许可证按外边框裁下，');
-        doc.text(25.75, 255.75, '然后将二维码折向背面，');
-        doc.text(25.75, 260.75, '最后将裁下的值勤许可证上下对折，再左右对折，');
-        doc.text(25.75, 265.75, '即可获得值勤许可证(横版)。');
-        doc.text(25.75, 270.75, '折叠完成后，');
-        doc.text(25.75, 275.75, '二维码应位于证件外侧和内侧的夹层中。');
-        doc.save('执勤许可证(横版).pdf');
-        //250.75
-    }
-
-    download_shu.onclick = function() {
-
-        //var imgData = ' ';
-        buildpdf('https://gcore.jsdelivr.net/gh/YubaC/2810security.github.io@latest/服务大厅/证件办理/images/formwork4.jpg');
-        //buildpdf('formwork2.jpg');
-
-        QRonload(QRtext);
-        makeCode();
-        doc.addImage(dataURL, 'PNG', 105.4 + 6, 212 + 10, 60.25, 60.25);
-        doc.text(25.75, 245.75, '这是竖版的值勤许可证。');
-        doc.text(25.75, 250.75, '打印完成后请将值勤许可证按外边框裁下，');
-        doc.text(25.75, 255.75, '然后将二维码折向背面，');
-        doc.text(25.75, 260.75, '最后将裁下的值勤许可证上下对折，再左右对折，');
-        doc.text(25.75, 265.75, '即可获得值勤许可证(竖版)。');
-        doc.text(25.75, 270.75, '折叠完成后，');
-        doc.text(25.75, 275.75, '二维码应位于证件外侧和内侧的夹层中。');
-        doc.save('执勤许可证(竖版).pdf');
-        //250.75
-    }
+        $('#exportBtn-shu').html(`<div class="spinner-border spinner-border-sm me-2" aria-hidden="true"></div>正在生成生成执勤许可证(竖版)...`).attr('disabled', true);
+        setTimeout(async function () {
+            await buildPDF(data);
+            $('#exportBtn-shu').html('生成完毕！');
+            setTimeout(function () {
+                $('#exportBtn-shu').html('生成执勤许可证(竖版)').attr('disabled', false);
+            }, 1500);
+        }, 100);
+    });
 </script>
 
 </html>
