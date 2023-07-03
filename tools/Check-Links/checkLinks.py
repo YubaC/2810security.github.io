@@ -11,11 +11,13 @@ import requests
 
 # 忽略的链接，不需要检查
 # 当链接的目标是这里面的文件的时候跳过
-f = open("checkLinks.ignore","r",encoding="utf-8")
+f = open("checkLinks.ignore", "r", encoding="utf-8")
 ignores = f.read().splitlines()
 f.close()
 
 # 遍历文件夹内的所有文件
+
+
 def checkLinks(path):
     # 起始位置为path
     start_path = path
@@ -27,25 +29,31 @@ def checkLinks(path):
                 checkFile(root, file, start_path)
 
 # 检查文件内的所有链接
+
+
 def checkFile(root, file, start_path):
     # print(root, file)
     with open(os.path.join(root, file), 'r', encoding='utf-8') as f:
         lines = f.readlines()
         for i, line in enumerate(lines):
             # print(i, line)
-            
+
             # i为行号，line为行内容
             checkLine(os.path.join(root, file), i, line, start_path)
-        
+
 # 检查行内的所有链接
+
+
 def checkLine(file, i, line, start_path):
     # print(file, i, line)
-    links = re.findall(r'<a href="(.+?)">', line)
+    links = re.findall(r'<a href="(.+?)".*?>', line)
     for link in links:
         # print(link)
         checkLink(file, i, link, start_path)
 
 # 检查链接是否有效
+
+
 def checkLink(file, i, link, start_path):
     global ignores
     # print(file, i, link)
@@ -59,15 +67,16 @@ def checkLink(file, i, link, start_path):
             pass
 
         # !检查外部链接是否有效太慢了，暂时不检查
-        elif link.startswith('http'): pass
+        elif link.startswith('http'):
+            pass
             # # file转换为相对路径
-            # file = os.path.relpath(file, start_path)
+           # file = os.path.relpath(file, start_path)
 
-            # r = requests.get(link)
-            # if r.status_code != 200:
-            #     with open(os.path.join(start_path, 'checkLinks.md'), 'a', encoding='utf-8') as f:
-            #         f.write('* [ ]  '+file + ', line ' + str(i) + ', ' + link + '\r\n')
-            #         f.close()
+           # r = requests.get(link)
+           # if r.status_code != 200:
+           #     with open(os.path.join(start_path, 'checkLinks.md'), 'a', encoding='utf-8') as f:
+           #         f.write('* [ ]  '+file + ', line ' + str(i) + ', ' + link + '\r\n')
+           #         f.close()
         elif link.startswith('mailto:'):
             pass
         else:
@@ -85,17 +94,18 @@ def checkLink(file, i, link, start_path):
                 if not os.path.exists(link):
                     # print(file, i, link)
                     with open(os.path.join(start_path, 'checkLinks.md'), 'a', encoding='utf-8') as f:
-                        f.write('* [ ]  '+file + ', line ' + str(i) + ', ' + link + '\r\n')
+                        f.write('* [ ]  '+file + ', line ' +
+                                str(i) + ', ' + link + '\r\n')
                         f.close()
 
             # 回到初始目录
             os.chdir(start_path)
-        
+
     except:
         # print(file, i, link)
         with open(os.path.join(start_path, 'checkLinks.md'), 'a', encoding='utf-8') as f:
-                f.write('* [ ]  '+file + ', line ' + str(i) + ', ' + link + '\r\n')
-                f.close()
+            f.write('* [ ]  '+file + ', line ' + str(i) + ', ' + link + '\r\n')
+            f.close()
 
 
 if __name__ == '__main__':
