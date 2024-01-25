@@ -18,7 +18,7 @@ on:
 
 jobs:
   Check-HTML-Links:
-    runs-on: windows-2019
+    runs-on: ubuntu-latest
 
     permissions:
       issues: write
