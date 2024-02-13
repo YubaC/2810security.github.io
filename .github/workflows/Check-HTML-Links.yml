@@ -63,6 +63,7 @@ jobs:
           EOF
 
       - name: Save PR message as artifact
+        if: ${{ failure() }}
         uses: actions/upload-artifact@v1
         with:
           name: bad-links
