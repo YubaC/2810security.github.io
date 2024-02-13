@@ -32,6 +32,7 @@ jobs:
       - name: Check links...
         run: |
           cd tools/Check-Links
+          ls -la
           pip install -r checkLinks-requirements.txt
           python checkLinks.py
 
