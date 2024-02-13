@@ -2,7 +2,6 @@ name: Comment Test
 
 on:
   pull_request:
-    branches: [main]
     types:
       - labeled
       - unlabeled
