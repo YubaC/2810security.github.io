@@ -1,0 +1,128 @@
+name: Update PR comments
+
+on:
+  workflow_run:
+    workflows: ["PR Test"]
+    types:
+      - completed
+
+jobs:
+  pr_updater:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: main
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          WORKFLOW_NAME: "Check HTML Links"
+          # the name of the artifact whose content comment published by PR. Must have a single markdown file inside.
+          MSG_ARTIFACT_NAME: "bad-links"
+          # How far back to look for finished runs, in minutes.
+          # Set to 10-20 minutes higher than cron's job frequency set above.
+          IGNORE_RUNS_OLDER_THAN: 30
+          # How far back to look for updated pull requests, in minutes.
+          # Should be bigger than IGNORE_RUNS_OLDER_THAN by the maximum time a pull request jobs may take
+          IGNORE_PRS_OLDER_THAN: 80
+        run: |
+          #
+          # Strategy:
+          #  * get the most recently updated pull request
+          #  * get the most recent workflow run
+          #  * match the pull request and its current SHA with the last workflow run for the same SHA
+          #  * download artifact from the workflow run -- expects a single file with markdown content
+          #  * create a comment with the new text
+          #
+
+          export GITHUB_API="https://api.github.com/repos/$GITHUB_REPOSITORY"
+          export COMMENT_MAGIC_HEADER='<!--'" Do not edit. This comment will be auto-updated with artifact '$MSG_ARTIFACT_NAME' created by action '$WORKFLOW_NAME' -->"
+
+          # A useful wrapper around CURL
+          crl() {
+            curl --silent --show-error --location --retry 1 "${@:2}" \
+              -H "Accept: application/vnd.github.antiope-preview+json, application/vnd.github.v3+json" \
+             "$1"
+          }
+
+          auth_crl() {
+            crl "$1" -H "authorization: Bearer $GITHUB_TOKEN" "${@:2}"
+          }
+
+          #
+          # Parse current pull requests
+          #
+
+          # Get the most recently updated pull request
+          PULL_REQUEST_RAW="$( crl "$GITHUB_API/pulls?sort=updated&direction=desc&per_page=1" )"
+          PULL_REQUEST="$(jq '.[0]' <( echo "$PULL_REQUEST_RAW" ) )"
+
+          PR_NUMBER="$(jq '.number' <( echo "$PULL_REQUEST" ) )"
+          echo "Processing pull request #$PR_NUMBER"
+
+          #
+          # Resolve workflow name into workflow ID
+          #
+          WORKFLOW_ID="$(crl "$GITHUB_API/actions/workflows" \
+              | jq --arg WORKFLOW_NAME "$WORKFLOW_NAME" '
+              .workflows[] | select(.name == $WORKFLOW_NAME) | .id
+              ')"
+          if [ -z "$WORKFLOW_ID" ]; then
+            echo "Unable to find workflow '$WORKFLOW_NAME' in $GITHUB_REPOSITORY"
+            exit 1
+          else
+            echo "Resolved workflow '$WORKFLOW_NAME' to ID $WORKFLOW_ID"
+          fi
+
+          #
+          # Match the pull request with the workflow run
+          #
+
+          # Get the most recent workflow run that was triggered by a pull request
+          WORKFLOW_RUN="$(crl "$GITHUB_API/actions/workflows/${WORKFLOW_ID}/runs?event=pull_request&per_page=1")"
+          RUN_ID="$(jq '.workflow_runs[0].id' <( echo "$WORKFLOW_RUN" ) )"
+          echo "Processing '$WORKFLOW_NAME' run #$RUN_ID for pull request #$PR_NUMBER"
+
+          #
+          # Update the pull request with the run ID
+          #
+          ARTIFACTS="$(crl "$GITHUB_API/actions/runs/$RUN_ID/artifacts")"
+
+          # Find the artifact download URL for the artifact with the expected name
+          ARTIFACT_URL="$(jq -r --arg MSG_ARTIFACT_NAME "$MSG_ARTIFACT_NAME" '
+              .artifacts
+              | map(select(.name == $MSG_ARTIFACT_NAME and .expired == false))
+              | first
+              | .archive_download_url
+              | select(.!=null)
+              ' <( echo "$ARTIFACTS" ) )"
+
+          if [ -z "$ARTIFACT_URL" ]; then
+            echo "Unable to find an artifact named '$MSG_ARTIFACT_NAME' in workflow $RUN_ID (PR #$PR_NUMBER), skipping..."
+            exit
+          fi
+
+          echo "Downloading artifact $ARTIFACT_URL (assuming single text file per artifact)..."
+          if ! MESSAGE="$(auth_crl "$ARTIFACT_URL" | gunzip)"; then
+            echo "Unable to download or parse message from artifact '$MSG_ARTIFACT_NAME' in workflow $RUN_ID (PR #$PR_NUMBER), skipping..."
+            exit
+          fi
+          if [ -z "$MESSAGE" ]; then
+            echo "Empty message in artifact '$MSG_ARTIFACT_NAME' in workflow $RUN_ID (PR #$PR_NUMBER), skipping..."
+            exit
+          fi
+
+          # Create a message body by appending a magic header
+          # and stripping any starting and ending whitespace from the original message
+          MESSAGE_BODY="$(jq -n \
+              --arg COMMENT_MAGIC_HEADER "$COMMENT_MAGIC_HEADER" \
+              --arg MESSAGE "$MESSAGE" \
+              '{ body: ($COMMENT_MAGIC_HEADER + "\n" + ($MESSAGE | sub( "^[\\s\\p{Cc}]+"; "" ) | sub( "[\\s\\p{Cc}]+$"; "" ))) }' \
+          )"
+
+          COMMENT_HTML_URL="$(auth_crl "$GITHUB_API/issues/$PR_NUMBER/comments" \
+              -X POST \
+              -H "Content-Type: application/json" \
+              --data "$MESSAGE_BODY" \
+            | jq -r '.html_url' )"
+          COMMENT_INFO="New comment $COMMENT_HTML_URL was created"
+
+          echo "$COMMENT_INFO from workflow $WORKFLOW_NAME #$RUN_ID"

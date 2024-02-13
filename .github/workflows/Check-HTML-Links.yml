@@ -46,21 +46,24 @@ jobs:
         if: ${{ failure() }}
         run: echo "${{ steps.errors.outputs.content }}"
 
-      - name: Comment PR
-        if: ${{ failure() && github.event_name == 'pull_request' }}
-        uses: peter-evans/create-or-update-comment@v1
+      - name: Save output as file
+        if: ${{ failure() }}
+        run: |
+          mkdir -p artifacts
+          cat > artifacts/message.md <<EOF
+          # HTML Links Test Report
+
+          Hi there!
+
+          Thank you for your Pull Request! However, we're sorry to inform you that the following illegal relative connection still exists within your Pull Request: 
+
+          ${{ steps.errors.outputs.content }}
+
+          Please fix these errors. Thank you again for your contribution.
+          EOF
+
+      - name: Save PR message as artifact
+        uses: actions/upload-artifact@v1
         with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            # HTML Links Test Report
-
-            Hi there!
-
-            Thank you for your Pull Request! However, we're sorry to inform you that the following illegal relative connection still exists within your Pull Request: 
-
-            ${{ steps.errors.outputs.content }}
-
-            Please fix these errors. Thank you again for your contribution.
-
-            Begonia/Yuba
-          token: ${{ secrets.GITHUB_TOKEN }}
+          name: bad-links
+          path: artifacts
