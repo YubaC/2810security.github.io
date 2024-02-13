@@ -18,7 +18,7 @@ on:
 
 jobs:
   Check-HTML-Links:
-    runs-on: windows-2019
+    runs-on: ubuntu-latest
 
     permissions:
       issues: write
@@ -50,7 +50,7 @@ jobs:
 
       - if: steps.errors.outputs.content != '' && github.event_name == 'pull_request'
         name: Create comment
-        uses: peter-evans/create-or-update-comment@v2
+        uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
