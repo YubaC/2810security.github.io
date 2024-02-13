@@ -16,8 +16,6 @@ ignores = f.read().splitlines()
 f.close()
 
 # 遍历文件夹内的所有文件
-
-
 def checkLinks(path):
     # 起始位置为path
     start_path = path
@@ -29,8 +27,6 @@ def checkLinks(path):
                 checkFile(root, file, start_path)
 
 # 检查文件内的所有链接
-
-
 def checkFile(root, file, start_path):
     # print(root, file)
     with open(os.path.join(root, file), 'r', encoding='utf-8') as f:
@@ -42,8 +38,6 @@ def checkFile(root, file, start_path):
             checkLine(os.path.join(root, file), i, line, start_path)
 
 # 检查行内的所有链接
-
-
 def checkLine(file, i, line, start_path):
     # print(file, i, line)
     links = re.findall(r'<a href="(.+?)".*?>', line)
@@ -52,8 +46,6 @@ def checkLine(file, i, line, start_path):
         checkLink(file, i, link, start_path)
 
 # 检查链接是否有效
-
-
 def checkLink(file, i, link, start_path):
     global ignores
     # print(file, i, link)
