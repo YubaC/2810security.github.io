@@ -12,7 +12,7 @@ import requests
 # 忽略的链接，不需要检查
 # 当链接的目标是这里面的文件的时候跳过
 f = open("checkLinks.ignore", "r", encoding="utf-8")
-ignores = f.read().splitlines()
+ignores = [os.path.normpath(path) for path in f.read().splitlines()]
 f.close()
 
 # 遍历文件夹内的所有文件
@@ -101,7 +101,6 @@ def checkLink(file, i, link, start_path):
 
 
 if __name__ == '__main__':
-    print(ignores)
     # 检查仓库文件夹下的所有文件
     repo_path = os.path.abspath(os.path.dirname(os.getcwd()))
     os.chdir(repo_path)

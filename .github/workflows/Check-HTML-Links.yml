@@ -35,6 +35,20 @@ jobs:
           pip install -r checkLinks-requirements.txt
           python checkLinks.py
 
+      - name: Save success output as file
+        if: ${{ success()}}
+        run: |
+          mkdir -p artifacts
+          cat > artifacts/message.md <<EOF
+          # HTML Links Test Report
+
+          Hi there!
+
+          Thank you for your Pull Request! We're happy to inform you that you have already passed all the tests.
+
+          Please wait for the review. Thank you again for your contribution.
+          EOF
+
       - name: Read bad links
         if: ${{ failure() }}
         id: errors
@@ -46,7 +60,7 @@ jobs:
         if: ${{ failure() }}
         run: echo "${{ steps.errors.outputs.content }}"
 
-      - name: Save output as file
+      - name: Save failure output as file
         if: ${{ failure() }}
         run: |
           mkdir -p artifacts
@@ -63,8 +77,8 @@ jobs:
           EOF
 
       - name: Save PR message as artifact
-        if: ${{ failure() }}
+        if: ${{ always() }}
         uses: actions/upload-artifact@v1
         with:
-          name: bad-links
+          name: pr-comment
           path: artifacts
