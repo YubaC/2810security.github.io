@@ -2,7 +2,7 @@ name: Update PR comments
 
 on:
   workflow_run:
-    workflows: ["PR Test"]
+    workflows: ["Check HTML Links"]
     types:
       - completed
 
