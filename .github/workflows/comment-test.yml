@@ -1,0 +1,18 @@
+name: Comment Test
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review, labeled]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Comment PR
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: Hi there! Thanks for opening this pull request. I will do some tests on it.
+          token: ${{ secrets.GITHUB_TOKEN }}
