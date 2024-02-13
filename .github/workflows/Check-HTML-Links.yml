@@ -39,17 +39,19 @@ jobs:
           pip install -r checkLinks-requirements.txt
           python checkLinks.py
 
-      - name: Check if links are OK...
+      - name: Read bad links
+        if: ${{ failure() }}
         id: errors
         uses: juliangruber/read-file-action@v1
         with:
           path: ./checkLinks.md
 
-      - name: Echo bad links...
+      - name: Echo bad links
+        if: ${{ failure() }}
         run: echo "${{ steps.errors.outputs.content }}"
 
-      - if: steps.errors.outputs.content != '' && github.event_name == 'pull_request'
-        name: Create comment
+      - name: Comment PR
+        if: ${{ failure() && github.event_name == 'pull_request' }}
         uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: ${{ github.event.pull_request.number }}
@@ -65,10 +67,4 @@ jobs:
             Please fix these errors. Thank you again for your contribution.
 
             Begonia/Yuba
-          reactions: "+1"
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      - if: steps.errors.outputs.content != ''
-        run: |
-          stopMarker=$(uuidgen)
-          echo "::$stopMarker::"

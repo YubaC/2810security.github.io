@@ -120,3 +120,11 @@ if __name__ == '__main__':
 
     # print("Checking Links in " + repo_path)
     checkLinks(repo_path)
+
+    # 如果有无效链接就报错退出
+    f = open('checkLinks.md', 'r', encoding='utf-8')
+    lines = f.read().splitlines()
+    f.close()
+    if len(lines) > 0:
+        print("Invalid Links Found")
+        exit(1)
