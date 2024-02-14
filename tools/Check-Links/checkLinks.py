@@ -11,6 +11,8 @@ import requests
 
 # 忽略的链接，不需要检查
 # 当链接的目标是这里面的文件的时候跳过
+
+# 切换文件夹为tools/Check-Links
 f = open("checkLinks.ignore", "r", encoding="utf-8")
 ignores = [os.path.normpath(path) for path in f.read().splitlines()]
 f.close()
