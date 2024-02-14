@@ -11,11 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Cancel workflow if not triggered by a pull request
-        uses: styfle/cancel-workflow-action@0.9.1
-        if: ${{ github.event.workflow_run.event != 'pull_request' }}
-        with:
-          access_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check event type
+        run: |
+          if [ "${{ github.event.workflow_run.event }}" != "pull_request" ]; then
+            echo "This workflow was not triggered by a pull request. Skipping..."
+            exit 1
+          fi
 
       - name: Update PR comment
         env:
